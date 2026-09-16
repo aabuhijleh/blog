@@ -15,7 +15,7 @@
     "astro:check": "astro check",
     "biome:check": "biome check",
     "biome:fix": "biome check --write",
-    "eslint:check": "eslint .",
+    "eslint:check": "eslint --no-warn-ignored",
     "verify": "bun run --parallel astro:check biome:check eslint:check",
     "prepare": "lefthook install"
   },
