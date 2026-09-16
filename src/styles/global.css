@@ -26,6 +26,9 @@
   --font-serif: var(--font-merriweather), serif;
   --font-sans: var(--font-fira-sans), sans-serif;
 
+  --text-body: 1.3rem;
+  --text-body--line-height: 1.75;
+  --leading-body: 1.75;
   --text-h1: 4rem;
   --text-h1--line-height: 1.2;
   --text-h2: 1.8rem;
@@ -34,6 +37,10 @@
   --text-h3--line-height: 1.2;
   --text-h4: 1.4rem;
   --text-h4--line-height: 1.2;
+  --text-h5: 1.3rem;
+  --text-h5--line-height: 1.2;
+  --text-h6: 1.2rem;
+  --text-h6--line-height: 1.2;
 
   --breakpoint-sm: 32.5rem;
   --breakpoint-md: 45rem;
@@ -90,7 +97,7 @@
   --tw-prose-th-borders: #ccc;
   --tw-prose-td-borders: #ccc;
 
-  font-size: 1.3rem;
+  font-size: var(--text-body);
   line-height: 1.75;
   max-width: none;
 }
@@ -101,9 +108,54 @@
   line-height: 1.2;
 }
 
+.prose h2 {
+  font-size: var(--text-h2);
+}
+
+.prose h3 {
+  font-size: var(--text-h3);
+}
+
+.prose h4 {
+  font-size: var(--text-h4);
+}
+
+.prose h5 {
+  font-size: var(--text-h5);
+}
+
+.prose h6 {
+  font-size: var(--text-h6);
+}
+
+.prose :is(h5, h6) {
+  margin-bottom: 0.5em;
+}
+
 .prose blockquote {
-  font-size: 1.4em;
+  margin: 2rem 0;
+  padding: 0 2rem;
+  font-size: var(--text-h4);
   font-style: italic;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.prose li {
+  margin: 1rem 0;
+}
+
+.prose :is(strong, b, th) {
+  font-weight: 700;
+}
+
+.prose a {
+  font-weight: inherit;
+}
+
+.prose table {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
 }
 
 .prose hr {
@@ -138,4 +190,5 @@
 .prose pre {
   border-radius: 8px;
   padding: 1.2em;
+  font-size: 1rem;
 }

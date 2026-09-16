@@ -1,21 +1,20 @@
 ---
-import { cn } from 'cn';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
 const title = 'About';
 const description = 'About this blog and the person writing it.';
-
-const figureClass = cn(
-  'float-right -mt-12 -mr-28 mb-8 ml-8 max-w-75 max-lg:float-none max-lg:mx-auto max-lg:mt-0',
-);
 ---
 
 <BaseLayout title={title} description={description}>
   <div class="mx-auto w-full max-w-2xl">
-    <h1 class="mb-16 font-serif text-h1 max-lg:mb-12 max-lg:text-5xl/tight">
+    <h1
+      class="mb-16 font-serif font-bold text-h1 max-lg:mb-12 max-lg:text-5xl/tight"
+    >
       About
     </h1>
-    <figure class={figureClass}>
+    <figure
+      class="float-right -mt-12 -mr-28 mb-8 ml-8 max-w-75 max-lg:float-none max-lg:mx-auto max-lg:mt-0"
+    >
       <img
         src="/assets/illustrations/greetings.svg"
         alt="A person waving hello, surrounded by floating notes"
