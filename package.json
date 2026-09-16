@@ -1,0 +1,42 @@
+{
+  "name": "blog",
+  "type": "module",
+  "version": "0.0.1",
+  "packageManager": "bun@1.4.2",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "astro:check": "astro check",
+    "biome:check": "biome check",
+    "biome:fix": "biome check --write",
+    "verify": "bun run --parallel astro:check biome:check",
+    "prepare": "lefthook install"
+  },
+  "dependencies": {
+    "@astrojs/markdown-satteri": "^0.4.1",
+    "@astrojs/mdx": "^8.0.1",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
+    "@lucide/astro": "^1.46.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.2",
+    "reading-time": "^1.5.0",
+    "sharp": "^0.35.0",
+    "tailwindcss": "^4.3.3"
+  },
+  "allowScripts": {
+    "esbuild": true
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@biomejs/biome": "2.5.14",
+    "@tailwindcss/typography": "0.5.20",
+    "lefthook": "2.1.14",
+    "typescript": "6.0.3"
+  }
+}

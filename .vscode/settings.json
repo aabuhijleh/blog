@@ -1,0 +1,28 @@
+{
+  "editor.formatOnSave": true,
+  "editor.quickSuggestions": { "strings": "on" },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+
+  "[astro]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[javascript]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[javascriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[typescript]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[typescriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[json]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[jsonc]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[css]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[tailwindcss]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[html]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[graphql]": { "editor.defaultFormatter": "biomejs.biome" },
+
+  "tailwindCSS.includeLanguages": { "astro": "html" },
+  "tailwindCSS.classAttributes": ["class", "className", "class:list"],
+  "tailwindCSS.experimental.classRegex": [
+    ["(?:Class|Classes)\\s*=\\s*([\\s\\S]*?);", "['\"`]([^'\"`]*)['\"`]"]
+  ],
+
+  "files.associations": { "*.css": "tailwindcss" }
+}

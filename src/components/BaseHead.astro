@@ -1,0 +1,66 @@
+---
+import '~/styles/global.css';
+import { Font } from 'astro:assets';
+import { ClientRouter } from 'astro:transitions';
+import { SITE_TITLE } from '~/consts';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialURL = new URL('/assets/social.png', Astro.site);
+---
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="sitemap" href="/sitemap-index.xml">
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={SITE_TITLE}
+  href={new URL('rss.xml', Astro.site)}
+>
+<meta name="generator" content={Astro.generator}>
+
+<Font cssVariable="--font-merriweather" preload />
+<Font cssVariable="--font-fira-sans" preload />
+
+<link rel="canonical" href={canonicalURL}>
+
+<title>{title}</title>
+<meta name="description" content={description}>
+
+<meta property="og:type" content="website">
+<meta property="og:url" content={canonicalURL}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:image" content={socialURL}>
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content={canonicalURL}>
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={description}>
+<meta name="twitter:image" content={socialURL}>
+
+<ClientRouter />
+
+<script is:inline>
+  function applyStoredTheme() {
+    const stored = localStorage.getItem('theme');
+    const prefersDark =
+      !stored && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.classList.toggle(
+      'theme-dark',
+      stored === 'dark' || prefersDark,
+    );
+  }
+
+  applyStoredTheme();
+  document.addEventListener('astro:after-swap', applyStoredTheme);
+</script>

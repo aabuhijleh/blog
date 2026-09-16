@@ -1,0 +1,31 @@
+---
+import { SITE_DESCRIPTION, SITE_TITLE } from '~/consts';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <div
+    class="my-[2em] flex min-h-100 flex-1 items-center justify-center max-md:flex-col"
+  >
+    <div
+      class="flex-1 px-[1em] max-md:flex-none max-md:pb-[2em] max-md:text-center"
+    >
+      <h1 class="mb-[0.5em] font-serif text-h1 font-bold max-lg:text-5xl/tight">
+        Welcome to your new Astro blog
+      </h1>
+      <p class="text-[1.4em] max-lg:text-[1.2em]">
+        Edit this page in <code>src/pages/index.astro</code> to make it yours.
+      </p>
+    </div>
+
+    <div class="mx-[1em] shrink-0 text-center">
+      <img
+        src="/assets/illustrations/monitor.svg"
+        alt="A monitor showing a page layout, with a cat sitting on top of it"
+        width="620"
+        height="457"
+        class="mb-[1em] h-auto w-155 max-w-full max-lg:w-120"
+      >
+    </div>
+  </div>
+</BaseLayout>

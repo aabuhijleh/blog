@@ -1,0 +1,39 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import readingTime from 'reading-time';
+import Bio from '~/components/Bio.astro';
+import FormattedDate from '~/components/FormattedDate.astro';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { title, description, pubDate } = post.data;
+const { Content } = await render(post);
+const estimate = readingTime(post.body ?? '').text;
+---
+
+<BaseLayout title={title} description={description}>
+  <header class="text-center">
+    <p class="font-sans font-bold text-muted uppercase">
+      <FormattedDate date={pubDate} />
+      ~ {estimate}
+    </p>
+    <h1 class="mb-[0.7em] font-serif text-h1 max-lg:text-5xl/tight">{title}</h1>
+    <hr class="squiggle mx-auto my-10 w-[30%] min-w-25">
+  </header>
+  <div class="mx-auto w-full max-w-2xl">
+    <article class="prose">
+      <Content />
+    </article>
+    <hr class="squiggle my-10">
+    <Bio />
+  </div>
+</BaseLayout>
