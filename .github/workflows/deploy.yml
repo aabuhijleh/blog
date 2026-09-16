@@ -1,9 +1,8 @@
 name: Deploy
 
 on:
-  workflow_run:
-    workflows: [Code quality]
-    types: [completed]
+  workflow_dispatch:
+  push:
     branches: [main]
 
 permissions:
@@ -14,9 +13,13 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  code-quality:
+    name: Code quality
+    uses: ./.github/workflows/code-quality.yml
+
   deploy:
     name: Deploy to Cloudflare
-    if: github.event.workflow_run.conclusion == 'success'
+    needs: code-quality
     runs-on: ubuntu-latest
     environment:
       name: production
@@ -25,7 +28,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
           persist-credentials: false
 
       - name: Set up Bun
