@@ -28,8 +28,11 @@ jobs:
       - name: Install dependencies
         run: bun ci
 
-      - name: Check formatting, lint rules and import order with Biome
+      - name: Biome
         run: bunx biome ci .
+
+      - name: ESLint
+        run: bun run eslint:check
 
       - name: Astro diagnostics
         run: bun run astro:check

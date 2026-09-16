@@ -14,7 +14,8 @@
     "astro:check": "astro check",
     "biome:check": "biome check",
     "biome:fix": "biome check --write",
-    "verify": "bun run --parallel astro:check biome:check",
+    "eslint:check": "eslint .",
+    "verify": "bun run --parallel astro:check biome:check eslint:check",
     "prepare": "lefthook install"
   },
   "dependencies": {
@@ -35,7 +36,12 @@
   "devDependencies": {
     "@astrojs/check": "0.9.10",
     "@biomejs/biome": "2.5.14",
+    "@shadcn/lint": "^0.1.0",
     "@tailwindcss/typography": "0.5.20",
+    "@typescript-eslint/parser": "^8.70.0",
+    "astro-eslint-parser": "^3.1.0",
+    "eslint": "^10.10.0",
+    "jiti": "^2.7.0",
     "lefthook": "2.1.14",
     "typescript": "6.0.3"
   }

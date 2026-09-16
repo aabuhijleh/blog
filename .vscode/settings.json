@@ -18,6 +18,14 @@
   "[html]": { "editor.defaultFormatter": "biomejs.biome" },
   "[graphql]": { "editor.defaultFormatter": "biomejs.biome" },
 
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "astro"
+  ],
+
   "tailwindCSS.includeLanguages": { "astro": "html" },
   "tailwindCSS.classAttributes": ["class", "className", "class:list"],
   "tailwindCSS.experimental.classRegex": [

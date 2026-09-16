@@ -5,3 +5,6 @@ pre-commit:
       glob: "*.{js,jsx,ts,tsx,mjs,cjs,mts,cts,json,jsonc,css,scss,html,astro,vue,svelte}"
       run: bunx biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
       stage_fixed: true
+    - name: eslint
+      glob: "*.{astro,js,jsx,ts,tsx,mjs,cjs,mts,cts}"
+      run: bunx eslint --no-warn-ignored --no-error-on-unmatched-pattern {staged_files}

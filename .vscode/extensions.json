@@ -3,10 +3,8 @@
     "astro-build.astro-vscode",
     "biomejs.biome",
     "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
     "unifiedjs.vscode-mdx"
   ],
-  "unwantedRecommendations": [
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode"
-  ]
+  "unwantedRecommendations": ["esbenp.prettier-vscode"]
 }
