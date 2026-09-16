@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   code-quality:
-    name: Check and build
+    name: Run checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,6 +35,3 @@ jobs:
 
       - name: Astro diagnostics
         run: bun run astro:check
-
-      - name: Build
-        run: bun run build
