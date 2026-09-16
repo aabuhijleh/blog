@@ -27,10 +27,8 @@
   ],
 
   "tailwindCSS.includeLanguages": { "astro": "html" },
-  "tailwindCSS.classAttributes": ["class", "className", "class:list"],
-  "tailwindCSS.experimental.classRegex": [
-    ["(?:Class|Classes)\\s*=\\s*([\\s\\S]*?);", "['\"`]([^'\"`]*)['\"`]"]
-  ],
+  "tailwindCSS.classAttributes": ["class", "className"],
+  "tailwindCSS.classFunctions": ["cn"],
 
   "files.associations": { "*.css": "tailwindcss" }
 }

@@ -20,6 +20,8 @@
   --color-ink: var(--palette-ink);
   --color-muted: var(--palette-muted);
   --color-accent: #548e9b;
+  --color-sun: #f59e0b;
+  --color-moon: #a5b4fc;
 
   --font-serif: var(--font-merriweather), serif;
   --font-sans: var(--font-fira-sans), sans-serif;

@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import { cn } from 'cn';
 
 type Props = HTMLAttributes<'a'>;
 
@@ -8,15 +9,15 @@ const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
 const subpath = pathname.match(/[^/]+/g);
 const isActive = href === pathname || href === `/${subpath?.[0] || ''}`;
 
-const linkClass = [
-  "relative ml-5 block min-w-[70px] px-[5px] py-[10px] text-center text-inherit no-underline before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-in-out before:content-[''] hover:before:scale-x-100",
+const linkClass = cn(
+  "relative ml-5 block min-w-17.5 px-1.25 py-2.5 text-center text-inherit no-underline before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-in-out before:content-[''] hover:before:scale-x-100",
   isActive
     ? 'before:scale-x-100 before:bg-accent'
     : 'opacity-70 before:bg-muted',
-];
+);
 ---
 
 <!-- biome-ignore lint/a11y/useAnchorContent: the <slot /> below carries the link text -->
-<a href={href} class:list={linkClass} {...props}>
+<a href={href} class={linkClass} {...props}>
   <slot />
 </a>

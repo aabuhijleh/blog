@@ -1,8 +1,10 @@
 ---
 import { Moon, Sun } from '@lucide/astro';
+import { cn } from 'cn';
 
-const buttonClass =
-  'ml-2.5 flex cursor-pointer items-center justify-center rounded-full p-2 transition-colors duration-200 hover:bg-muted/15';
+const buttonClass = cn(
+  'ml-2.5 flex cursor-pointer items-center justify-center rounded-full p-2 transition-colors duration-200 hover:bg-muted/15',
+);
 ---
 
 <button
@@ -11,12 +13,8 @@ const buttonClass =
   data-theme-toggle
   aria-label="Switch to dark theme"
 >
-  <Sun size={20} class="text-amber-500 dark:hidden" aria-hidden="true" />
-  <Moon
-    size={20}
-    class="hidden text-indigo-300 dark:block"
-    aria-hidden="true"
-  />
+  <Sun size={20} class="text-sun dark:hidden" aria-hidden="true" />
+  <Moon size={20} class="hidden text-moon dark:block" aria-hidden="true" />
 </button>
 
 <script is:inline data-astro-rerun>

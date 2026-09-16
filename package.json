@@ -26,6 +26,7 @@
     "@lucide/astro": "^1.46.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.2",
+    "cn": "^0.3.0",
     "reading-time": "^1.5.0",
     "sharp": "^0.35.0",
     "tailwindcss": "^4.3.3"

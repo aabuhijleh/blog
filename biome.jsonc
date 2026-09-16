@@ -6,7 +6,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!.astro", "!dist", "!public", "!bun.lock"]
+    "includes": ["**", "!public"]
   },
   "formatter": {
     "enabled": true,
@@ -35,7 +35,7 @@
           "level": "error",
           "fix": "safe",
           "options": {
-            "attributes": ["class:list"]
+            "functions": ["cn"]
           }
         }
       }

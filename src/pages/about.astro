@@ -1,16 +1,20 @@
 ---
+import { cn } from 'cn';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
 const title = 'About';
 const description = 'About this blog and the person writing it.';
 
-const figureClass =
-  'float-right mt-[-3em] mr-[-7em] mb-[2em] ml-[2em] max-w-75 max-lg:float-none max-lg:mx-auto max-lg:mt-0';
+const figureClass = cn(
+  'float-right -mt-12 -mr-28 mb-8 ml-8 max-w-75 max-lg:float-none max-lg:mx-auto max-lg:mt-0',
+);
 ---
 
 <BaseLayout title={title} description={description}>
-  <div class="mx-auto w-full max-w-168">
-    <h1 class="mb-[1em] font-serif text-h1 max-lg:text-5xl/tight">About</h1>
+  <div class="mx-auto w-full max-w-2xl">
+    <h1 class="mb-16 font-serif text-h1 max-lg:mb-12 max-lg:text-5xl/tight">
+      About
+    </h1>
     <figure class={figureClass}>
       <img
         src="/assets/illustrations/greetings.svg"
@@ -30,7 +34,7 @@ const figureClass =
       </p>
       <p>
         Every illustration and icon on this site, down to the favicon, comes
-        from <a href="https://lukaszadam.com">Łukasz Adam's</a> collection, and
+        from <a href="https://lukaszadam.com">Lukasz Adam's</a> collection, and
         every one of them is an SVG.
       </p>
     </div>

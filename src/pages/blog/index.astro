@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { cn } from 'cn';
 import FormattedDate from '~/components/FormattedDate.astro';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
@@ -10,13 +11,16 @@ const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const postTitleClass =
-  'mb-[0.5em] font-sans text-h2 font-bold text-ink hover:text-accent';
+const postTitleClass = cn(
+  'mb-3.5 font-bold font-sans text-h2 text-ink hover:text-accent',
+);
 ---
 
 <BaseLayout title={title} description={description}>
-  <div class="mx-auto w-full max-w-168">
-    <h1 class="mb-[1em] font-serif text-h1 max-lg:text-5xl/tight">Blog</h1>
+  <div class="mx-auto w-full max-w-2xl">
+    <h1 class="mb-16 font-serif text-h1 max-lg:mb-12 max-lg:text-5xl/tight">
+      Blog
+    </h1>
     {posts.map((post, index) => (
   <div>
     {index !== 0 && <hr class="squiggle my-15" />}
@@ -26,7 +30,7 @@ const postTitleClass =
           {post.data.title}
         </a>
       </h2>
-      <p class="my-[1.2em] text-[1.3rem]/relaxed">{post.data.description}</p>
+      <p class="my-6 text-xl/relaxed">{post.data.description}</p>
       <p class="font-bold font-sans text-muted uppercase">
         — <FormattedDate date={post.data.pubDate} />
       </p>
