@@ -10,6 +10,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "deploy": "astro build && wrangler deploy",
     "astro": "astro",
     "astro:check": "astro check",
     "biome:check": "biome check",
@@ -44,6 +45,7 @@
     "eslint": "^10.10.0",
     "jiti": "^2.7.0",
     "lefthook": "2.1.14",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "wrangler": "4.132.0"
   }
 }

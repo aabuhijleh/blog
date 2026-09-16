@@ -6,7 +6,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 import { externalLinks } from './src/markdown/external-links';
 
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://blog.aabuhijleh.com',
 
   compressHTML: false,
   integrations: [mdx(), sitemap()],
