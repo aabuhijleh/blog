@@ -5,10 +5,10 @@ interface Props {
 
 const { date } = Astro.props;
 
-const formatted = date.toLocaleDateString('en-us', {
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric',
+const formatted = date.toLocaleDateString("en-us", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
 });
 ---
 

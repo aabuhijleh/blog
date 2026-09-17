@@ -1,14 +1,14 @@
-import { satteri } from '@astrojs/markdown-satteri';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-import tailwindcss from '@tailwindcss/vite';
-import { defineConfig, fontProviders } from 'astro/config';
-import og from 'astro-og';
-import { externalLinks } from './src/markdown/external-links';
-import { images } from './src/markdown/images';
+import { satteri } from "@astrojs/markdown-satteri";
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig, fontProviders } from "astro/config";
+import og from "astro-og";
+import { externalLinks } from "./src/markdown/external-links";
+import { images } from "./src/markdown/images";
 
 export default defineConfig({
-  site: 'https://blog.aabuhijleh.com',
+  site: "https://blog.aabuhijleh.com",
 
   compressHTML: false,
   integrations: [mdx(), sitemap(), og()],
@@ -16,24 +16,24 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.google(),
-      name: 'Merriweather',
-      cssVariable: '--font-merriweather',
-      fallbacks: ['serif'],
+      name: "Merriweather",
+      cssVariable: "--font-merriweather",
+      fallbacks: ["serif"],
       weights: [400, 700],
-      styles: ['normal', 'italic'],
+      styles: ["normal", "italic"],
     },
     {
       provider: fontProviders.google(),
-      name: 'Fira Sans',
-      cssVariable: '--font-fira-sans',
-      fallbacks: ['sans-serif'],
+      name: "Fira Sans",
+      cssVariable: "--font-fira-sans",
+      fallbacks: ["sans-serif"],
       weights: [400, 700],
     },
   ],
 
   markdown: {
     shikiConfig: {
-      theme: 'nord',
+      theme: "nord",
     },
     processor: satteri({ hastPlugins: [externalLinks, images] }),
   },

@@ -1,18 +1,18 @@
-import type { SatteriProcessorOptions } from '@astrojs/markdown-satteri';
+import type { SatteriProcessorOptions } from "@astrojs/markdown-satteri";
 
-type HastPlugin = NonNullable<SatteriProcessorOptions['hastPlugins']>[number];
+type HastPlugin = NonNullable<SatteriProcessorOptions["hastPlugins"]>[number];
 
-const isDev = process.env.NODE_ENV !== 'production';
+const isDev = process.env.NODE_ENV !== "production";
 
 export const images: HastPlugin = {
-  name: 'images',
+  name: "images",
   element: {
-    filter: ['img'],
+    filter: ["img"],
     visit(node, ctx) {
-      ctx.setProperty(node, 'loading', 'lazy');
-      ctx.setProperty(node, 'decoding', 'async');
+      ctx.setProperty(node, "loading", "lazy");
+      ctx.setProperty(node, "decoding", "async");
       if (isDev) {
-        ctx.setProperty(node, 'data-image-component', 'true');
+        ctx.setProperty(node, "data-image-component", "true");
       }
     },
   },

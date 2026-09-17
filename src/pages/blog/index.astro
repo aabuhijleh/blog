@@ -1,12 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
-import FormattedDate from '~/components/FormattedDate.astro';
-import BaseLayout from '~/layouts/BaseLayout.astro';
+import { getCollection } from "astro:content";
+import FormattedDate from "~/components/FormattedDate.astro";
+import BaseLayout from "~/layouts/BaseLayout.astro";
 
-const title = 'Blog';
-const description = 'Latest articles.';
+const title = "Blog";
+const description = "Latest articles.";
 
-const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---

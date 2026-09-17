@@ -1,14 +1,14 @@
-import type { SatoriOptions } from 'satori';
-import sharp from 'sharp';
-import firaSans from '~/assets/fonts/fira-sans-latin-400-normal.woff?inline';
-import firaSansBold from '~/assets/fonts/fira-sans-latin-700-normal.woff?inline';
-import merriweatherBold from '~/assets/fonts/merriweather-latin-700-normal.woff?inline';
-import type { Illustration } from '~/lib/illustrations';
-import avatarSvg from '/public/assets/avatar.svg?raw';
+import type { SatoriOptions } from "satori";
+import sharp from "sharp";
+import firaSans from "~/assets/fonts/fira-sans-latin-400-normal.woff?inline";
+import firaSansBold from "~/assets/fonts/fira-sans-latin-700-normal.woff?inline";
+import merriweatherBold from "~/assets/fonts/merriweather-latin-700-normal.woff?inline";
+import type { Illustration } from "~/lib/illustrations";
+import avatarSvg from "/public/assets/avatar.svg?raw";
 
 const SUPERSAMPLE = 2;
-const ACCENT = '#548e9b';
-const AVATAR_BACKDROP = '#3b3c3d';
+const ACCENT = "#548e9b";
+const AVATAR_BACKDROP = "#3b3c3d";
 const TRANSPARENT = { r: 0, g: 0, b: 0, alpha: 0 };
 
 export interface Raster {
@@ -23,14 +23,14 @@ interface Box {
 }
 
 interface RasterOptions {
-  fit?: 'inside' | 'contain';
+  fit?: "inside" | "contain";
   background?: string | { r: number; g: number; b: number; alpha: number };
 }
 
 const rasterize = async (
   source: Buffer,
   box: Box,
-  { fit = 'inside', background = TRANSPARENT }: RasterOptions = {},
+  { fit = "inside", background = TRANSPARENT }: RasterOptions = {},
 ): Promise<Raster> => {
   const target = {
     width: box.width * SUPERSAMPLE,
@@ -51,33 +51,33 @@ const rasterize = async (
   const rendered = await sharp(png).metadata();
 
   return {
-    src: `data:image/png;base64,${png.toString('base64')}`,
+    src: `data:image/png;base64,${png.toString("base64")}`,
     width: rendered.width / SUPERSAMPLE,
     height: rendered.height / SUPERSAMPLE,
   };
 };
 
 const decodeDataUri = (dataUri: string) =>
-  Buffer.from(dataUri.slice(dataUri.indexOf(',') + 1), 'base64');
+  Buffer.from(dataUri.slice(dataUri.indexOf(",") + 1), "base64");
 
-export const fonts: SatoriOptions['fonts'] = [
+export const fonts: SatoriOptions["fonts"] = [
   {
-    name: 'Merriweather',
+    name: "Merriweather",
     data: decodeDataUri(merriweatherBold),
     weight: 700,
-    style: 'normal',
+    style: "normal",
   },
   {
-    name: 'Fira Sans',
+    name: "Fira Sans",
     data: decodeDataUri(firaSans),
     weight: 400,
-    style: 'normal',
+    style: "normal",
   },
   {
-    name: 'Fira Sans',
+    name: "Fira Sans",
     data: decodeDataUri(firaSansBold),
     weight: 700,
-    style: 'normal',
+    style: "normal",
   },
 ];
 
@@ -86,7 +86,7 @@ export const loadAvatar = (size: number) =>
   (avatar ??= rasterize(
     Buffer.from(avatarSvg),
     { width: size, height: size },
-    { fit: 'contain', background: AVATAR_BACKDROP },
+    { fit: "contain", background: AVATAR_BACKDROP },
   ));
 
 const squiggleSvg = (
@@ -106,12 +106,12 @@ export const loadSquiggle = (box: Box) =>
 
 const illustrationSources = Object.fromEntries(
   Object.entries(
-    import.meta.glob('/public/assets/illustrations/*.svg', {
-      query: '?raw',
-      import: 'default',
+    import.meta.glob("/public/assets/illustrations/*.svg", {
+      query: "?raw",
+      import: "default",
       eager: true,
     }),
-  ).map(([file, svg]) => [file.replace(/.*\/|\.svg$/g, ''), svg as string]),
+  ).map(([file, svg]) => [file.replace(/.*\/|\.svg$/g, ""), svg as string]),
 ) as Record<Illustration, string>;
 
 export const loadIllustration = (name: Illustration, box: Box) => {

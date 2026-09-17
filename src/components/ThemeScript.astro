@@ -1,14 +1,14 @@
 <script is:inline>
   function applyStoredTheme() {
-    const stored = localStorage.getItem('theme');
+    const stored = localStorage.getItem("theme");
     const prefersDark =
-      !stored && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      !stored && window.matchMedia("(prefers-color-scheme: dark)").matches;
     document.documentElement.classList.toggle(
-      'theme-dark',
-      stored === 'dark' || prefersDark,
+      "theme-dark",
+      stored === "dark" || prefersDark,
     );
   }
 
   applyStoredTheme();
-  document.addEventListener('astro:after-swap', applyStoredTheme);
+  document.addEventListener("astro:after-swap", applyStoredTheme);
 </script>

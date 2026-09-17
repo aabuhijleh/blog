@@ -1,17 +1,17 @@
 ---
-import { Moon, Sun } from '@lucide/astro';
-import { cn } from 'cn';
+import { Moon, Sun } from "@lucide/astro";
+import { cn } from "cn";
 
 const buttonClass = cn(
-  'relative ml-2.5 flex cursor-pointer items-center justify-center rounded-full p-2 transition-colors duration-200 hover:bg-muted/15',
+  "relative ml-2.5 flex cursor-pointer items-center justify-center rounded-full p-2 transition-colors duration-200 hover:bg-muted/15",
 );
 
 const sunClass = cn(
-  'size-5 rotate-0 scale-100 text-sun transition-all duration-200 dark:-rotate-90 dark:scale-0',
+  "size-5 rotate-0 scale-100 text-sun transition-all duration-200 dark:-rotate-90 dark:scale-0",
 );
 
 const moonClass = cn(
-  'absolute size-5 rotate-90 scale-0 text-moon transition-all duration-200 dark:rotate-0 dark:scale-100',
+  "absolute size-5 rotate-90 scale-0 text-moon transition-all duration-200 dark:rotate-0 dark:scale-100",
 );
 ---
 
@@ -23,12 +23,12 @@ const moonClass = cn(
 
 <script is:inline data-astro-rerun>
   {
-    const button = document.querySelector('[data-theme-toggle]');
+    const button = document.querySelector("[data-theme-toggle]");
     const root = document.documentElement;
 
-    button.addEventListener('click', () => {
-      const dark = root.classList.toggle('theme-dark');
-      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    button.addEventListener("click", () => {
+      const dark = root.classList.toggle("theme-dark");
+      localStorage.setItem("theme", dark ? "dark" : "light");
     });
   }
 </script>

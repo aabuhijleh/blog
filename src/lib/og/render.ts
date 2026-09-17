@@ -1,13 +1,13 @@
-import satori from 'satori';
-import sharp from 'sharp';
-import { SITE_AUTHOR } from '~/consts';
-import type { Illustration } from '~/lib/illustrations';
+import satori from "satori";
+import sharp from "sharp";
+import { SITE_AUTHOR } from "~/consts";
+import type { Illustration } from "~/lib/illustrations";
 import {
   fonts,
   loadAvatar,
   loadIllustration,
   loadSquiggle,
-} from '~/lib/og/assets';
+} from "~/lib/og/assets";
 import {
   AVATAR_SIZE,
   CARD_HEIGHT,
@@ -15,7 +15,7 @@ import {
   ILLUSTRATION_BOX,
   ogCard,
   SQUIGGLE_BOX,
-} from '~/lib/og/card';
+} from "~/lib/og/card";
 
 export interface OgImageInput {
   title: string;
@@ -27,7 +27,7 @@ export interface OgImageInput {
 }
 
 const monthAndYear = (date: Date) =>
-  date.toLocaleDateString('en-us', { month: 'long', year: 'numeric' });
+  date.toLocaleDateString("en-us", { month: "long", year: "numeric" });
 
 export const renderOgImage = async ({
   title,
@@ -51,7 +51,7 @@ export const renderOgImage = async ({
     squiggle,
     subtitle,
     dateLabel: pubDate && monthAndYear(pubDate),
-    tagsLine: tags.slice(0, 3).join(' • '),
+    tagsLine: tags.slice(0, 3).join(" • "),
     illustration: rasterizedIllustration,
   });
 
