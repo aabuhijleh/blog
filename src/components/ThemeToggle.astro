@@ -7,18 +7,14 @@ const buttonClass = cn(
 );
 ---
 
-<button
-  type="button"
-  class={buttonClass}
-  data-theme-toggle
-  aria-label="Switch to dark theme"
->
+<button type="button" class={buttonClass} data-theme-toggle>
   <Sun
     class="size-5 scale-100 rotate-0 text-sun transition-all duration-200 dark:scale-0 dark:-rotate-90"
   />
   <Moon
     class="absolute size-5 scale-0 rotate-90 text-moon transition-all duration-200 dark:scale-100 dark:rotate-0"
   />
+  <span class="sr-only">Toggle theme</span>
 </button>
 
 <script is:inline data-astro-rerun>
@@ -26,20 +22,9 @@ const buttonClass = cn(
     const button = document.querySelector('[data-theme-toggle]');
     const root = document.documentElement;
 
-    const label = () =>
-      button.setAttribute(
-        'aria-label',
-        root.classList.contains('theme-dark')
-          ? 'Switch to light theme'
-          : 'Switch to dark theme',
-      );
-
-    label();
-
     button.addEventListener('click', () => {
       const dark = root.classList.toggle('theme-dark');
       localStorage.setItem('theme', dark ? 'dark' : 'light');
-      label();
     });
   }
 </script>
