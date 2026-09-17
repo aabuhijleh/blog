@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
 const title = 'About';
@@ -15,12 +16,13 @@ const description = 'About this blog and the person writing it.';
     <figure
       class="float-right -mt-12 -mr-28 mb-8 ml-8 max-w-75 max-lg:float-none max-lg:mx-auto max-lg:mt-0"
     >
-      <img
+      <Image
+        loading="eager"
         src="/assets/illustrations/greetings.svg"
         alt="A person waving hello, surrounded by floating notes"
         width="300"
         height="300"
-      >
+      />
     </figure>
     <div class="prose">
       <p>

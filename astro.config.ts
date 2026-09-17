@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, fontProviders } from 'astro/config';
 import og from 'astro-og';
 import { externalLinks } from './src/markdown/external-links';
+import { images } from './src/markdown/images';
 
 export default defineConfig({
   site: 'https://blog.aabuhijleh.com',
@@ -34,7 +35,7 @@ export default defineConfig({
     shikiConfig: {
       theme: 'nord',
     },
-    processor: satteri({ hastPlugins: [externalLinks] }),
+    processor: satteri({ hastPlugins: [externalLinks, images] }),
   },
 
   vite: {
