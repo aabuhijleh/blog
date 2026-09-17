@@ -1,9 +1,82 @@
 ---
 import { Image } from "astro:assets";
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import { cn } from "~/lib/cn";
 
 const title = "About";
 const description = "Who I am, what I work on, and where else to find me.";
+
+interface Tech {
+  name: string;
+  href: string;
+  src: string;
+  darkSrc?: string;
+  width: number;
+  height: number;
+}
+
+const stack: Tech[] = [
+  {
+    name: "TypeScript",
+    href: "https://www.typescriptlang.org",
+    src: "/assets/logos/typescript.svg",
+    width: 256,
+    height: 256,
+  },
+  {
+    name: "React",
+    href: "https://react.dev",
+    src: "/assets/logos/react-light.svg",
+    darkSrc: "/assets/logos/react-dark.svg",
+    width: 569,
+    height: 512,
+  },
+  {
+    name: "TanStack",
+    href: "https://tanstack.com",
+    src: "/assets/logos/tanstack-light.svg",
+    darkSrc: "/assets/logos/tanstack-dark.svg",
+    width: 64,
+    height: 84,
+  },
+  {
+    name: "Tailwind",
+    href: "https://tailwindcss.com",
+    src: "/assets/logos/tailwindcss.svg",
+    width: 54,
+    height: 33,
+  },
+  {
+    name: "Bun",
+    href: "https://bun.sh",
+    src: "/assets/logos/bun.svg",
+    width: 80,
+    height: 70,
+  },
+  {
+    name: "Turborepo",
+    href: "https://turborepo.com",
+    src: "/assets/logos/turborepo-light.svg",
+    darkSrc: "/assets/logos/turborepo-dark.svg",
+    width: 100,
+    height: 100,
+  },
+  {
+    name: "Claude Code",
+    href: "https://claude.com/claude-code",
+    src: "/assets/logos/claude.svg",
+    width: 256,
+    height: 257,
+  },
+];
+
+const chipClass = cn(
+  "group flex items-center gap-2.5 rounded-full border border-muted/30 bg-muted/10 px-4 py-2 font-sans text-lg no-underline transition duration-200 hover:-translate-y-1 hover:rotate-0 hover:border-accent",
+);
+
+const logoClass = cn(
+  "h-6 w-auto transition-transform duration-200 group-hover:scale-115",
+);
 ---
 
 <BaseLayout title={title} description={description}>
@@ -26,30 +99,51 @@ const description = "Who I am, what I work on, and where else to find me.";
     </figure>
     <div class="prose">
       <p>
-        I'm Abed Abu-Hijleh, a senior software engineer in the West Bank. I've
-        been paid to write software since 2018, almost all of it for the web.
+        I'm Abed Abu-Hijleh, a software engineer from the West Bank. I've been
+        coding for food since 2018, and for fun since well before that.
       </p>
+      <p>My tech stack these days:</p>
+    </div>
+
+    <ul class="my-8 flex list-none flex-wrap gap-3 p-0">
+      {stack.map((tech, index) => (
+  <li>
+    <a
+      href={tech.href}
+      target="_blank"
+      rel="noopener"
+      class={cn(chipClass, index % 2 === 0 ? "rotate-2" : "-rotate-2")}
+    >
+      <Image
+        loading="eager"
+        src={tech.src}
+        alt=""
+        width={tech.width}
+        height={tech.height}
+        class={cn(logoClass, tech.darkSrc && "dark:hidden")}
+      />
+      {tech.darkSrc && (
+        <Image
+          loading="eager"
+          src={tech.darkSrc}
+          alt=""
+          width={tech.width}
+          height={tech.height}
+          class={cn(logoClass, "hidden dark:block")}
+        />
+      )}
+      {tech.name}
+    </a>
+  </li>
+))}
+    </ul>
+
+    <div class="prose">
       <p>
-        These days that means TypeScript and React, with TanStack Start and
-        Query on the front end, Tailwind for styling, and Python on the API
-        side. Before that I spent three years on a cross-platform Electron app,
-        writing C++ addons to reach the parts of macOS and Windows that Node.js
-        can't, then a couple of years on design systems and eCommerce front
-        ends.
-      </p>
-      <p>
-        The tooling half of the job is the part I enjoy most: linters, CLIs, and
-        lately getting coding agents to do work I'd otherwise do by hand.
-      </p>
-      <p>
-        I write here so I can find things again. Posts are short, usually one
-        problem and the fix that worked.
-      </p>
-      <p>
-        There's more about my work at
+        There's more about my work on
         <a href="https://aabuhijleh.com" target="_blank" rel="noopener"
-          >aabuhijleh.com</a
-        >. You can also find me on
+          >my website</a
+        >. Otherwise I'm on
         <a href="https://github.com/aabuhijleh" target="_blank" rel="noopener"
           >GitHub</a
         >,
@@ -61,14 +155,16 @@ const description = "Who I am, what I work on, and where else to find me.";
         >,
         <a href="https://x.com/aabuhijleh_dev" target="_blank" rel="noopener"
           >X</a
-        >, and
+        >
+        and
         <a
           href="https://stackoverflow.com/users/9698583/aabuhijleh"
           target="_blank"
           rel="noopener"
           >Stack Overflow</a
-        >, or email me at
-        <a href="mailto:aabuhijleh.dev@gmail.com">aabuhijleh.dev@gmail.com</a>.
+        >, or one
+        <a href="mailto:aabuhijleh.dev@gmail.com">email</a>
+        away.
       </p>
     </div>
   </div>
