@@ -21,3 +21,6 @@ pnpm-debug.log*
 .wrangler/
 
 .scratch/
+
+AGENTS.md
+CLAUDE.md

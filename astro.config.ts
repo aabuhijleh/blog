@@ -3,13 +3,14 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, fontProviders } from 'astro/config';
+import og from 'astro-og';
 import { externalLinks } from './src/markdown/external-links';
 
 export default defineConfig({
   site: 'https://blog.aabuhijleh.com',
 
   compressHTML: false,
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx(), sitemap(), og()],
 
   fonts: [
     {
