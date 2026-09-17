@@ -12,7 +12,7 @@ export const GET: APIRoute = async ({ site }) => {
   const png = await renderOgImage({
     title: SITE_TITLE,
     subtitle: SITE_DESCRIPTION,
-    illustration: "monitor",
+    illustration: "retro-computer",
     site,
   });
 

@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import BaseLayout from "~/layouts/BaseLayout.astro";
 
 const title = "About";
-const description = "About this blog and the person writing it.";
+const description = "Who I am, what I work on, and where else to find me.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -18,25 +18,57 @@ const description = "About this blog and the person writing it.";
     >
       <Image
         loading="eager"
-        src="/assets/illustrations/greetings.svg"
-        alt="A person waving hello, surrounded by floating notes"
-        width="300"
-        height="300"
+        src="/assets/illustrations/coding-rocket.svg"
+        alt="A rocket launching through the clouds with the React logo on its side"
+        width="574"
+        height="669"
       />
     </figure>
     <div class="prose">
       <p>
-        This is the about page. Replace this copy with your own: who you are,
-        what you write about, and why someone should keep reading.
+        I'm Abed Abu-Hijleh, a senior software engineer in the West Bank. I've
+        been paid to write software since 2018, almost all of it for the web.
       </p>
       <p>
-        The illustration hangs into the right-hand margin on a wide screen and
-        moves above the text once the viewport narrows past 1020px.
+        These days that means TypeScript and React, with TanStack Start and
+        Query on the front end, Tailwind for styling, and Python on the API
+        side. Before that I spent three years on a cross-platform Electron app,
+        writing C++ addons to reach the parts of macOS and Windows that Node.js
+        can't, then a couple of years on design systems and eCommerce front
+        ends.
       </p>
       <p>
-        Every illustration and icon on this site, down to the favicon, comes
-        from <a href="https://lukaszadam.com">Lukasz Adam's</a> collection, and
-        every one of them is an SVG.
+        The tooling half of the job is the part I enjoy most: linters, CLIs, and
+        lately getting coding agents to do work I'd otherwise do by hand.
+      </p>
+      <p>
+        I write here so I can find things again. Posts are short, usually one
+        problem and the fix that worked.
+      </p>
+      <p>
+        There's more about my work at
+        <a href="https://aabuhijleh.com" target="_blank" rel="noopener"
+          >aabuhijleh.com</a
+        >. You can also find me on
+        <a href="https://github.com/aabuhijleh" target="_blank" rel="noopener"
+          >GitHub</a
+        >,
+        <a
+          href="https://www.linkedin.com/in/aabuhijleh/"
+          target="_blank"
+          rel="noopener"
+          >LinkedIn</a
+        >,
+        <a href="https://x.com/aabuhijleh_dev" target="_blank" rel="noopener"
+          >X</a
+        >, and
+        <a
+          href="https://stackoverflow.com/users/9698583/aabuhijleh"
+          target="_blank"
+          rel="noopener"
+          >Stack Overflow</a
+        >, or email me at
+        <a href="mailto:aabuhijleh.dev@gmail.com">aabuhijleh.dev@gmail.com</a>.
       </p>
     </div>
   </div>
