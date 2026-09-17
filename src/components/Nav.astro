@@ -1,11 +1,43 @@
 ---
+import { Image } from "astro:assets";
+import { cn } from "~/lib/cn";
 import NavLink from "./NavLink.astro";
 import ThemeToggle from "./ThemeToggle.astro";
+
+const githubClass = cn(
+  "ml-2.5 flex items-center justify-center rounded-full p-2 no-underline transition-colors duration-200 hover:bg-muted/15",
+);
+
+const iconClass = cn("size-5");
 ---
 
 <nav class="flex flex-1 items-center justify-end font-sans font-bold uppercase">
   <NavLink href="/">home</NavLink>
   <NavLink href="/about">about</NavLink>
   <NavLink href="/blog">blog</NavLink>
+  <a
+    href="https://github.com/aabuhijleh"
+    target="_blank"
+    rel="noopener"
+    class={githubClass}
+  >
+    <Image
+      loading="eager"
+      src="/assets/logos/github-light.svg"
+      alt=""
+      width="1024"
+      height="1024"
+      class={cn(iconClass, "dark:hidden")}
+    />
+    <Image
+      loading="eager"
+      src="/assets/logos/github-dark.svg"
+      alt=""
+      width="1024"
+      height="1024"
+      class={cn(iconClass, "hidden dark:block")}
+    />
+    <span class="sr-only">GitHub</span>
+  </a>
   <ThemeToggle />
 </nav>
