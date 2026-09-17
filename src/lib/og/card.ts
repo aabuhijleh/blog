@@ -84,7 +84,7 @@ export const ogCard = ({
       fontFamily: "Fira Sans",
       color: palette.muted,
     },
-    glow({ top: -90, right: -80 }, 360, 0.13),
+    dateLabel && glow({ top: -90, right: -80 }, 360, 0.13),
     glow({ bottom: -130, left: -120 }, 420, 0.09),
     h(
       "div",
