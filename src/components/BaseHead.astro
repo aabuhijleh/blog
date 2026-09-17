@@ -3,6 +3,7 @@ import '~/styles/global.css';
 import { Font } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
 import { SITE_TITLE } from '~/consts';
+import ThemeScript from './ThemeScript.astro';
 
 interface Props {
   title: string;
@@ -50,17 +51,4 @@ const socialURL = new URL('/assets/social.png', Astro.site);
 
 <ClientRouter />
 
-<script is:inline>
-  function applyStoredTheme() {
-    const stored = localStorage.getItem('theme');
-    const prefersDark =
-      !stored && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    document.documentElement.classList.toggle(
-      'theme-dark',
-      stored === 'dark' || prefersDark,
-    );
-  }
-
-  applyStoredTheme();
-  document.addEventListener('astro:after-swap', applyStoredTheme);
-</script>
+<ThemeScript />
