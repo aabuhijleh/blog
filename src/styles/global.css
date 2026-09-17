@@ -94,6 +94,12 @@
   --tw-prose-quote-borders: #ccc;
   --tw-prose-captions: var(--palette-muted);
   --tw-prose-code: var(--palette-ink);
+  --tw-prose-kbd: var(--palette-ink);
+  --tw-prose-kbd-shadows: color-mix(
+    in srgb,
+    var(--palette-muted) 50%,
+    transparent
+  );
   --tw-prose-th-borders: #ccc;
   --tw-prose-td-borders: #ccc;
 
@@ -185,6 +191,10 @@
 .prose :not(pre) > code::before,
 .prose :not(pre) > code::after {
   content: none;
+}
+
+.prose kbd {
+  background-color: color-mix(in srgb, var(--palette-muted) 18%, transparent);
 }
 
 .prose pre {
