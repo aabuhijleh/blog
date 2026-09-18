@@ -16,10 +16,10 @@ import { blogSource } from "./explorer";
 
 Write the npm version of a command. The component derives the pnpm, yarn, and bun equivalents.
 
-```mdx
+```tsx
 import { PackageCommand } from "~/components/package-command";
 
-<PackageCommand client:visible command="npx shadcn@latest add accordion" />
+<PackageCommand client:visible command="npx shadcn@latest add accordion" />;
 ```
 
 <PackageCommand client:visible command="npx shadcn@latest add accordion" />
@@ -32,7 +32,7 @@ Picking a tab writes the choice to `localStorage` and every other block on the s
 
 Pass `commands` to override any of the four when the translation is wrong.
 
-```mdx
+```tsx
 <PackageCommand
   client:visible
   command="npm install sharp"
@@ -44,7 +44,7 @@ Pass `commands` to override any of the four when the translation is wrong.
 
 Click a folder to open it, click a file to read it. Arrow keys move through the tree, and `Enter` opens the focused folder or reads the focused file.
 
-```mdx
+```tsx
 import { FileExplorer } from "~/components/file-explorer";
 
 <FileExplorer
@@ -57,7 +57,7 @@ import { FileExplorer } from "~/components/file-explorer";
       ],
     },
   ]}
-/>
+/>;
 ```
 
 <FileExplorer
