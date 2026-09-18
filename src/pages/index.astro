@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import retroComputer from "~/assets/illustrations/retro-computer.svg";
 import { SITE_DESCRIPTION, SITE_TITLE } from "~/consts";
 import BaseLayout from "~/layouts/BaseLayout.astro";
 ---
@@ -22,10 +23,8 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
     <div class="w-full max-w-155 lg:flex-1">
       <Image
         loading="eager"
-        src="/assets/illustrations/retro-computer.svg"
+        src={retroComputer}
         alt="A retro desktop computer with a green screen full of code, a keyboard and mouse on the desk"
-        width="722"
-        height="291"
         class="h-auto w-full"
       />
     </div>

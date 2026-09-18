@@ -1,5 +1,7 @@
 ---
 import { Image } from "astro:assets";
+import githubDark from "~/assets/icons/github-dark.svg";
+import githubLight from "~/assets/icons/github-light.svg";
 import { cn } from "~/lib/cn";
 import NavLink from "./NavLink.astro";
 import ThemeToggle from "./ThemeToggle.astro";
@@ -25,18 +27,14 @@ const iconClass = cn("size-4.5 sm:size-5");
   >
     <Image
       loading="eager"
-      src="/assets/logos/github-light.svg"
+      src={githubLight}
       alt=""
-      width="1024"
-      height="1024"
       class={cn(iconClass, "dark:hidden")}
     />
     <Image
       loading="eager"
-      src="/assets/logos/github-dark.svg"
+      src={githubDark}
       alt=""
-      width="1024"
-      height="1024"
       class={cn(iconClass, "hidden dark:block")}
     />
     <span class="sr-only">GitHub</span>

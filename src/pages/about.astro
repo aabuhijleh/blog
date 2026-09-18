@@ -1,5 +1,16 @@
 ---
 import { Image } from "astro:assets";
+import codingRocket from "~/assets/illustrations/coding-rocket.svg";
+import bun from "~/assets/logos/bun.svg";
+import claude from "~/assets/logos/claude.svg";
+import reactDark from "~/assets/logos/react-dark.svg";
+import reactLight from "~/assets/logos/react-light.svg";
+import tailwindcss from "~/assets/logos/tailwindcss.svg";
+import tanstackDark from "~/assets/logos/tanstack-dark.svg";
+import tanstackLight from "~/assets/logos/tanstack-light.svg";
+import turborepoDark from "~/assets/logos/turborepo-dark.svg";
+import turborepoLight from "~/assets/logos/turborepo-light.svg";
+import typescript from "~/assets/logos/typescript.svg";
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import { cn } from "~/lib/cn";
 
@@ -9,64 +20,48 @@ const description = "Who I am, what I work on, and where else to find me.";
 interface Tech {
   name: string;
   href: string;
-  src: string;
-  darkSrc?: string;
-  width: number;
-  height: number;
+  src: ImageMetadata;
+  darkSrc?: ImageMetadata;
 }
 
 const stack: Tech[] = [
   {
     name: "TypeScript",
     href: "https://www.typescriptlang.org",
-    src: "/assets/logos/typescript.svg",
-    width: 256,
-    height: 256,
+    src: typescript,
   },
   {
     name: "React",
     href: "https://react.dev",
-    src: "/assets/logos/react-light.svg",
-    darkSrc: "/assets/logos/react-dark.svg",
-    width: 569,
-    height: 512,
+    src: reactLight,
+    darkSrc: reactDark,
   },
   {
     name: "TanStack",
     href: "https://tanstack.com",
-    src: "/assets/logos/tanstack-light.svg",
-    darkSrc: "/assets/logos/tanstack-dark.svg",
-    width: 64,
-    height: 84,
+    src: tanstackLight,
+    darkSrc: tanstackDark,
   },
   {
     name: "Tailwind",
     href: "https://tailwindcss.com",
-    src: "/assets/logos/tailwindcss.svg",
-    width: 54,
-    height: 33,
+    src: tailwindcss,
   },
   {
     name: "Bun",
     href: "https://bun.sh",
-    src: "/assets/logos/bun.svg",
-    width: 80,
-    height: 70,
+    src: bun,
   },
   {
     name: "Turborepo",
     href: "https://turborepo.com",
-    src: "/assets/logos/turborepo-light.svg",
-    darkSrc: "/assets/logos/turborepo-dark.svg",
-    width: 100,
-    height: 100,
+    src: turborepoLight,
+    darkSrc: turborepoDark,
   },
   {
     name: "Claude Code",
     href: "https://claude.com/claude-code",
-    src: "/assets/logos/claude.svg",
-    width: 256,
-    height: 257,
+    src: claude,
   },
 ];
 
@@ -87,10 +82,8 @@ const logoClass = cn(
     >
       <Image
         loading="eager"
-        src="/assets/illustrations/coding-rocket.svg"
+        src={codingRocket}
         alt="A rocket launching through the clouds with the React logo on its side"
-        width="574"
-        height="669"
       />
     </figure>
     <div class="prose">
@@ -114,8 +107,6 @@ const logoClass = cn(
         loading="eager"
         src={tech.src}
         alt=""
-        width={tech.width}
-        height={tech.height}
         class={cn(logoClass, tech.darkSrc && "dark:hidden")}
       />
       {tech.darkSrc && (
@@ -123,8 +114,6 @@ const logoClass = cn(
           loading="eager"
           src={tech.darkSrc}
           alt=""
-          width={tech.width}
-          height={tech.height}
           class={cn(logoClass, "hidden dark:block")}
         />
       )}

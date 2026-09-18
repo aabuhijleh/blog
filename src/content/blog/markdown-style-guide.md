@@ -40,7 +40,7 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 
 ### Output
 
-![A person waving hello, surrounded by floating notes](/assets/illustrations/greetings.svg)
+![A person waving hello, surrounded by floating notes](~/assets/illustrations/greetings.svg)
 
 ## Blockquotes
 

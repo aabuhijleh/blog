@@ -1,10 +1,10 @@
 import type { SatoriOptions } from "satori";
 import sharp from "sharp";
+import avatarSvg from "~/assets/avatar.svg?raw";
 import firaSans from "~/assets/fonts/fira-sans-latin-400-normal.woff?inline";
 import firaSansBold from "~/assets/fonts/fira-sans-latin-700-normal.woff?inline";
 import merriweatherBold from "~/assets/fonts/merriweather-latin-700-normal.woff?inline";
 import type { Illustration } from "~/lib/illustrations";
-import avatarSvg from "/public/assets/avatar.svg?raw";
 
 const SUPERSAMPLE = 2;
 const ACCENT = "#548e9b";
@@ -106,7 +106,7 @@ export const loadSquiggle = (box: Box) =>
 
 const illustrationSources = Object.fromEntries(
   Object.entries(
-    import.meta.glob("/public/assets/illustrations/*.svg", {
+    import.meta.glob("/src/assets/illustrations/*.svg", {
       query: "?raw",
       import: "default",
       eager: true,
@@ -118,7 +118,7 @@ export const loadIllustration = (name: Illustration, box: Box) => {
   const svg = illustrationSources[name];
   if (!svg) {
     throw new Error(
-      `No illustration named '${name}' in public/assets/illustrations.`,
+      `No illustration named '${name}' in src/assets/illustrations.`,
     );
   }
 

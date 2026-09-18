@@ -1,15 +1,14 @@
 ---
 import { Image } from "astro:assets";
+import notepad from "~/assets/icons/notepad.svg";
 ---
 
 <a href="/" class="block shrink-0">
   <span class="sr-only">Home</span>
   <Image
     loading="eager"
-    src="/assets/icons/notepad.svg"
+    src={notepad}
     alt=""
-    width="60"
-    height="60"
     class="block w-9 sm:w-12 lg:w-15"
   />
 </a>
