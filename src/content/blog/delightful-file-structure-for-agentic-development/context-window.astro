@@ -1,0 +1,57 @@
+---
+import { cn } from "~/lib/cn";
+
+const groups = [
+  {
+    caption: "Loaded before you type anything",
+    rowClass: "border-accent/40 bg-accent/12",
+    items: [
+      { name: "System prompt", note: "the agent's own instructions" },
+      { name: "CLAUDE.md", note: "your project and user rules" },
+      {
+        name: "Auto memory (MEMORY.md)",
+        note: "what it kept from past sessions",
+      },
+      { name: "Skill descriptions", note: "a line for every installed skill" },
+      { name: "MCP tool names", note: "a name for every tool" },
+    ],
+  },
+  {
+    caption: "Added after you hit enter",
+    rowClass: "border-muted/30 bg-muted/8",
+    items: [
+      { name: "Your prompt" },
+      { name: "Codebase files", note: "every file the agent opens" },
+      { name: "Tool call results", note: "command output, search hits" },
+      { name: "Subagent responses" },
+    ],
+  },
+];
+---
+
+<figure class="not-prose my-8 font-sans text-sm sm:text-base">
+  <figcaption class="mb-2 font-bold">Context window</figcaption>
+
+  <div class="flex flex-col gap-4 rounded-2xl border border-muted/40 p-3 sm:p-4">
+    {groups.map((group) => (
+      <div class="flex flex-col gap-2 not-first:border-muted/50 not-first:border-t not-first:border-dashed not-first:pt-4">
+        <p class="text-muted text-xs uppercase tracking-wide sm:text-sm">
+          {group.caption}
+        </p>
+        <ul class="flex list-none flex-col gap-2 p-0">
+          {group.items.map((item) => (
+            <li
+              class={cn(
+                "flex flex-col gap-0.5 rounded-lg border px-3 py-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4",
+                group.rowClass,
+              )}
+            >
+              <span class="font-bold">{item.name}</span>
+              {item.note && <span class="text-muted">{item.note}</span>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</figure>
