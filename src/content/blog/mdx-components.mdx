@@ -1,0 +1,73 @@
+---
+title: 'Two interactive MDX components'
+description: 'A package manager command block and a file tree, both loadable from MDX.'
+pubDate: 'Sep 17 2026'
+tags: ['MDX', 'Astro', 'React']
+illustration: 'retro-computer'
+---
+
+Two components I use in posts. Both take plain data props, so they work anywhere MDX does.
+
+import FileTree from '~/components/FileTree.astro';
+import { PackageCommand } from '~/components/PackageCommand';
+import { blogSource } from './mdx-components.tree';
+
+## Package manager commands
+
+Write the npm version of a command. The component derives the pnpm, yarn, and bun equivalents.
+
+```mdx
+import { PackageCommand } from '~/components/PackageCommand';
+
+<PackageCommand client:visible command="npx shadcn@latest add accordion" />
+```
+
+<PackageCommand client:visible command="npx shadcn@latest add accordion" />
+
+Picking a tab writes the choice to `localStorage` and every other block on the site follows it.
+
+<PackageCommand client:visible command="npm install -D vitest" />
+
+<PackageCommand client:visible command="npm run dev" />
+
+Pass `commands` to override any of the four when the translation is wrong.
+
+```mdx
+<PackageCommand
+  client:visible
+  command="npm install sharp"
+  commands={{ bun: 'bun add sharp --trust' }}
+/>
+```
+
+## File tree
+
+Click a folder to open it, click a file to read it. Arrow keys move through the tree, and `Enter` opens the focused folder or reads the focused file.
+
+```mdx
+import FileTree from '~/components/FileTree.astro';
+
+<FileTree
+  label="Blog source"
+  tree={[
+    {
+      name: 'src',
+      children: [
+        { name: 'consts.ts', content: `export const SITE_AUTHOR = 'Abed';` },
+      ],
+    },
+  ]}
+/>
+```
+
+<FileTree
+  label="Blog source"
+  defaultExpanded={['src', 'src/components']}
+  tree={blogSource}
+/>
+
+`defaultExpanded` takes folder paths. Leave it out and the top level opens on its own.
+
+Give a file a `content` string and Shiki highlights it during the build, with the same nord theme as the code blocks above. The browser gets the finished HTML, so no highlighter ships to the client. A file without `content` still sits in the tree, it just has nothing to show.
+
+One catch. MDX strips the leading spaces off every line inside a JSX expression, so a multi-line string written in the post comes out flat. Keep those files in a `.ts` module next to the post and import the tree, the way the explorer above does.

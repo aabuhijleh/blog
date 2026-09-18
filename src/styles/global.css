@@ -9,6 +9,14 @@
   --palette-canvas: #fff;
   --palette-ink: #36393b;
   --palette-muted: #6b6f72;
+
+  --palette-terminal: #2e3440;
+  --palette-terminal-raised: #3b4252;
+  --palette-terminal-edge: #434c5e;
+  --palette-terminal-ink: #d8dee9;
+  --palette-terminal-bright: #eceff4;
+  --palette-terminal-muted: #a3aec2;
+  --palette-terminal-accent: #88c0d0;
 }
 
 :root.theme-dark {
@@ -26,6 +34,13 @@
   --color-accent: #548e9b;
   --color-sun: #f59e0b;
   --color-moon: #a5b4fc;
+  --color-terminal: var(--palette-terminal);
+  --color-terminal-raised: var(--palette-terminal-raised);
+  --color-terminal-edge: var(--palette-terminal-edge);
+  --color-terminal-ink: var(--palette-terminal-ink);
+  --color-terminal-bright: var(--palette-terminal-bright);
+  --color-terminal-muted: var(--palette-terminal-muted);
+  --color-terminal-accent: var(--palette-terminal-accent);
 
   --font-serif: var(--font-merriweather), serif;
   --font-sans: var(--font-fira-sans), sans-serif;
@@ -151,7 +166,7 @@
   line-height: 1.6;
 }
 
-.prose li {
+.prose li:not(.not-prose *) {
   margin: 1rem 0;
 }
 
@@ -186,14 +201,14 @@
   color: #fff;
 }
 
-.prose :not(pre) > code {
+.prose :not(pre) > code:not(.not-prose *) {
   border-radius: 2px;
   background-color: color-mix(in srgb, var(--palette-muted) 18%, transparent);
   padding: 0.2em 0.4em;
   font-weight: inherit;
 }
-.prose :not(pre) > code::before,
-.prose :not(pre) > code::after {
+.prose :not(pre) > code:not(.not-prose *)::before,
+.prose :not(pre) > code:not(.not-prose *)::after {
   content: none;
 }
 
@@ -201,7 +216,7 @@
   background-color: color-mix(in srgb, var(--palette-muted) 18%, transparent);
 }
 
-.prose pre {
+.prose pre:not(.not-prose *) {
   border-radius: 8px;
   padding: 1.2em;
   font-size: 1rem;

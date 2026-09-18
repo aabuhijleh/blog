@@ -1,0 +1,45 @@
+---
+import {
+  DEFAULT_PACKAGE_MANAGER,
+  PACKAGE_MANAGER_STORAGE_KEY,
+  PACKAGE_MANAGERS,
+} from "~/lib/package-manager";
+
+const script = `
+  function applyStoredPackageManager() {
+    const stored = localStorage.getItem(${JSON.stringify(PACKAGE_MANAGER_STORAGE_KEY)});
+    const allowed = ${JSON.stringify(PACKAGE_MANAGERS)};
+    document.documentElement.dataset.packageManager = allowed.includes(stored)
+      ? stored
+      : ${JSON.stringify(DEFAULT_PACKAGE_MANAGER)};
+  }
+
+  applyStoredPackageManager();
+  document.addEventListener("astro:after-swap", applyStoredPackageManager);
+`;
+---
+
+<script is:inline set:html={script}></script>
+
+<style is:global>
+  /* Painted before hydration so a stored package manager never flashes the default. */
+  [data-package-manager-panel] {
+    display: none;
+  }
+
+  html[data-package-manager="bun"] [data-package-manager-panel="bun"],
+  html[data-package-manager="pnpm"] [data-package-manager-panel="pnpm"],
+  html[data-package-manager="npm"] [data-package-manager-panel="npm"],
+  html[data-package-manager="yarn"] [data-package-manager-panel="yarn"] {
+    display: block;
+  }
+
+  html[data-package-manager="bun"] [data-package-manager-tab="bun"],
+  html[data-package-manager="pnpm"] [data-package-manager-tab="pnpm"],
+  html[data-package-manager="npm"] [data-package-manager-tab="npm"],
+  html[data-package-manager="yarn"] [data-package-manager-tab="yarn"] {
+    border-color: var(--palette-terminal-edge);
+    background-color: var(--palette-terminal-raised);
+    color: var(--palette-terminal-bright);
+  }
+</style>

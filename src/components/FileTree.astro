@@ -1,0 +1,54 @@
+---
+import { type FileTreeSource, highlightFileTree } from "~/lib/file-tree";
+import { FileTreeView } from "./FileTreeView";
+
+interface Props {
+  tree: FileTreeSource[];
+  label?: string;
+  emptyLabel?: string;
+  defaultExpanded?: string[];
+  defaultExpandedDepth?: number;
+}
+
+const { tree, ...rest } = Astro.props;
+
+const nodes = await highlightFileTree(tree);
+---
+
+<FileTreeView client:visible tree={nodes} {...rest} />
+
+<style is:global>
+  [data-file-tree-group] {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.2s ease;
+  }
+
+  [data-file-tree-group][data-expanded="true"] {
+    grid-template-rows: 1fr;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-file-tree-group] {
+      transition: none;
+    }
+  }
+
+  [data-file-tree-item]:focus-visible > [data-file-tree-row] {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+  }
+
+  [data-file-tree-preview] > div {
+    display: contents;
+  }
+
+  [data-file-tree-preview] pre {
+    flex: 1;
+    min-width: 0;
+    overflow: auto;
+    padding: 0.9rem 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+</style>

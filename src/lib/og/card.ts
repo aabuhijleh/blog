@@ -19,16 +19,19 @@ type Child = Element | string | false | undefined;
 interface Element {
   type: string;
   props: Record<string, unknown>;
+  key: null;
 }
 
 const h = (type: string, style: Style, ...children: Array<Child>): Element => ({
   type,
   props: { style, children: children.filter(Boolean) },
+  key: null,
 });
 
 const img = (raster: Raster, style: Style = {}): Element => ({
   type: "img",
   props: { ...raster, style },
+  key: null,
 });
 
 const glow = (placement: Style, size: number, alpha: number) =>

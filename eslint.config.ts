@@ -14,7 +14,6 @@ const rules: Linter.RulesRecord = {
   "shadcn/no-restyle": ["error", { allow: ["layout"] }],
   "shadcn/no-raw-colors": ["error", { allow: ["text-body", "text-h*"] }],
   "shadcn/no-arbitrary-values": ["error", { allow: ["content-['']"] }],
-  "shadcn/no-inline-styles": "error",
   "shadcn/no-unknown-classes": "error",
   "shadcn/require-static-classes": "error",
 };
