@@ -48,7 +48,7 @@
   --text-body: clamp(1.0625rem, 0.95rem + 0.5vw, 1.3rem);
   --text-body--line-height: 1.7;
   --leading-body: 1.7;
-  --text-h1: clamp(2.25rem, 1.2rem + 4.6vw, 4.5rem);
+  --text-h1: clamp(2.25rem, 1.5rem + 3vw, 3.5rem);
   --text-h1--line-height: 1.15;
   --text-h2: clamp(1.45rem, 1.25rem + 0.9vw, 1.9rem);
   --text-h2--line-height: 1.25;
@@ -129,11 +129,7 @@
   --tw-prose-captions: var(--palette-muted);
   --tw-prose-code: var(--palette-ink);
   --tw-prose-kbd: var(--palette-ink);
-  --tw-prose-kbd-shadows: color-mix(
-    in srgb,
-    var(--palette-muted) 50%,
-    transparent
-  );
+  --tw-prose-kbd-shadows: color-mix(in srgb, var(--palette-muted) 50%, transparent);
   --tw-prose-th-borders: #ccc;
   --tw-prose-td-borders: #ccc;
 
