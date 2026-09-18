@@ -1,6 +1,9 @@
-<script is:inline>
+---
+import { THEME_STORAGE_KEY } from "./store";
+
+const script = `
   function applyStoredTheme() {
-    const stored = localStorage.getItem("theme");
+    const stored = localStorage.getItem(${JSON.stringify(THEME_STORAGE_KEY)});
     const prefersDark =
       !stored && window.matchMedia("(prefers-color-scheme: dark)").matches;
     document.documentElement.classList.toggle(
@@ -11,4 +14,7 @@
 
   applyStoredTheme();
   document.addEventListener("astro:after-swap", applyStoredTheme);
-</script>
+`;
+---
+
+<script is:inline set:html={script}></script>
