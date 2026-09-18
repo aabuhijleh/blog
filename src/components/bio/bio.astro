@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import avatar from "~/assets/avatar.svg";
+import { SOCIAL_LINKS } from "~/consts";
+import BioLink from "./bio-link.astro";
 ---
 
 <div
@@ -12,11 +14,11 @@ import avatar from "~/assets/avatar.svg";
     alt=""
     class="block size-20 shrink-0 rounded-full bg-muted/15 sm:size-25"
   />
-  <p class="text-base sm:text-lg">
-    I'm <strong>Abed</strong>. I build things for the web. You can find more of
-    my work on
-    <a href="https://aabuhijleh.com" target="_blank" rel="noopener"
-      >my website</a
-    >.
+  <p class="text-pretty text-base sm:text-lg">
+    Hi, I'm <strong>Abed</strong>. I'm a software engineer based in the West
+    Bank. You can see some of my work on
+    <BioLink href={SOCIAL_LINKS.github}>GitHub</BioLink>, or read more about me
+    on
+    <BioLink href={SOCIAL_LINKS.website}>my website</BioLink>.
   </p>
 </div>

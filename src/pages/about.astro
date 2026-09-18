@@ -11,6 +11,7 @@ import tanstackLight from "~/assets/logos/tanstack-light.svg";
 import turborepoDark from "~/assets/logos/turborepo-dark.svg";
 import turborepoLight from "~/assets/logos/turborepo-light.svg";
 import typescript from "~/assets/logos/typescript.svg";
+import { SOCIAL_LINKS } from "~/consts";
 import { BaseLayout } from "~/layouts/base-layout";
 import { cn } from "~/lib/cn";
 
@@ -88,8 +89,8 @@ const logoClass = cn(
     </figure>
     <div class="prose">
       <p>
-        I'm Abed Abu-Hijleh, a software engineer from the West Bank. I've been
-        coding for food since 2018, and for fun since well before that.
+        I'm Abed Abu-Hijleh, a software engineer based in the West Bank. I've
+        been coding for food since 2018, and for fun since well before that.
       </p>
       <p>My tech stack these days:</p>
     </div>
@@ -125,31 +126,22 @@ const logoClass = cn(
 
     <div class="prose">
       <p>
-        There's more about my work on
-        <a href="https://aabuhijleh.com" target="_blank" rel="noopener"
-          >my website</a
-        >. Otherwise I'm on
-        <a href="https://github.com/aabuhijleh" target="_blank" rel="noopener"
-          >GitHub</a
-        >,
-        <a
-          href="https://www.linkedin.com/in/aabuhijleh/"
-          target="_blank"
-          rel="noopener"
+        You can see some of my work on
+        <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener">GitHub</a>,
+        find me on
+        <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener"
           >LinkedIn</a
-        >,
-        <a href="https://x.com/aabuhijleh_dev" target="_blank" rel="noopener"
-          >X</a
-        >
-        and
-        <a
-          href="https://stackoverflow.com/users/9698583/aabuhijleh"
-          target="_blank"
-          rel="noopener"
+        >, follow me on
+        <a href={SOCIAL_LINKS.x} target="_blank" rel="noopener">X</a>, or catch
+        me on
+        <a href={SOCIAL_LINKS.stackOverflow} target="_blank" rel="noopener"
           >Stack Overflow</a
-        >, or one
-        <a href="mailto:aabuhijleh.dev@gmail.com">email</a>
-        away.
+        >
+        👴🏼. There's more on
+        <a href={SOCIAL_LINKS.website} target="_blank" rel="noopener"
+          >my website</a
+        >, and you can reach out via
+        <a href={SOCIAL_LINKS.email}>email</a>.
       </p>
     </div>
   </div>
