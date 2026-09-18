@@ -2,16 +2,13 @@ import { useStore } from "@nanostores/react";
 import { Check, Copy, SquareTerminal } from "lucide-react";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { cn } from "~/lib/cn";
-import {
-  type PackageCommands,
-  toPackageCommands,
-} from "~/lib/package-commands";
+import { type PackageCommands, toPackageCommands } from "./commands";
 import {
   $packageManager,
   DEFAULT_PACKAGE_MANAGER,
   PACKAGE_MANAGERS,
   type PackageManager,
-} from "~/lib/package-manager";
+} from "./store";
 
 interface PackageCommandProps {
   command: string;

@@ -121,12 +121,17 @@ export const blogSource: FileExplorerSource[] = [
               { name: "types.ts" },
             ],
           },
-          { name: "PackageCommand.tsx" },
+          {
+            name: "package-command",
+            children: [
+              { name: "index.ts" },
+              { name: "package-command.tsx" },
+              { name: "package-manager-script.astro" },
+              { name: "commands.ts" },
+              { name: "store.ts" },
+            ],
+          },
         ],
-      },
-      {
-        name: "lib",
-        children: [{ name: "package-commands.ts" }],
       },
       {
         name: "styles",

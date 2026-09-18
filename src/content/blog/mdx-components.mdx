@@ -9,7 +9,7 @@ illustration: "retro-computer"
 Two components I use in posts. Both take plain data props, so they work anywhere MDX does.
 
 import { FileExplorer } from "~/components/file-explorer";
-import { PackageCommand } from "~/components/PackageCommand";
+import { PackageCommand } from "~/components/package-command";
 import { blogSource } from "./mdx-components.tree";
 
 ## Package manager commands
@@ -17,7 +17,7 @@ import { blogSource } from "./mdx-components.tree";
 Write the npm version of a command. The component derives the pnpm, yarn, and bun equivalents.
 
 ```mdx
-import { PackageCommand } from "~/components/PackageCommand";
+import { PackageCommand } from "~/components/package-command";
 
 <PackageCommand client:visible command="npx shadcn@latest add accordion" />
 ```

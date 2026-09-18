@@ -1,4 +1,4 @@
-import { PACKAGE_MANAGERS, type PackageManager } from "~/lib/package-manager";
+import { PACKAGE_MANAGERS, type PackageManager } from "./store";
 
 export type PackageCommands = Record<PackageManager, string>;
 
