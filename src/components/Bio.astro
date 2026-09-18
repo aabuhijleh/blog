@@ -2,16 +2,18 @@
 import { Image } from "astro:assets";
 ---
 
-<div class="flex items-center">
+<div
+  class="flex flex-col items-center gap-4 text-center sm:flex-row sm:gap-5 sm:text-left"
+>
   <Image
     loading="lazy"
     src="/assets/avatar.svg"
     alt=""
     width="100"
     height="100"
-    class="mr-5 block size-25 shrink-0 rounded-full bg-muted/15"
+    class="block size-20 shrink-0 rounded-full bg-muted/15 sm:size-25"
   />
-  <p class="text-lg">
+  <p class="text-base sm:text-lg">
     I'm <strong>Abed</strong>. I build things for the web. You can find more of
     my work on
     <a href="https://aabuhijleh.com" target="_blank" rel="noopener"

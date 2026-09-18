@@ -25,19 +25,23 @@ const cardClass = cn(
 );
 
 const headerClass = cn(
-  "flex items-center gap-2 border-terminal-edge border-b px-3 py-2",
+  "flex items-center gap-1.5 border-terminal-edge border-b px-2 py-2 sm:gap-2 sm:px-3",
+);
+
+const tablistClass = cn(
+  "scrollbar-none flex min-w-0 flex-1 items-center gap-1 overflow-x-auto [&::-webkit-scrollbar]:hidden",
 );
 
 const tabClass = cn(
-  "cursor-pointer rounded-md border border-transparent px-2.5 py-1 font-mono text-sm text-terminal-muted leading-6 transition-colors hover:text-terminal-bright",
+  "shrink-0 cursor-pointer rounded-md border border-transparent px-2 py-1 font-mono text-terminal-muted text-xs leading-6 transition-colors hover:text-terminal-bright sm:px-2.5 sm:text-sm",
 );
 
 const copyClass = cn(
-  "ml-auto cursor-pointer rounded-md p-1.5 text-terminal-muted transition-colors hover:bg-terminal-raised hover:text-terminal-bright",
+  "shrink-0 cursor-pointer rounded-md p-1.5 text-terminal-muted transition-colors hover:bg-terminal-raised hover:text-terminal-bright",
 );
 
 const commandClass = cn(
-  "overflow-x-auto px-4 py-3.5 font-mono text-base text-terminal-ink leading-7",
+  "overflow-x-auto px-3 py-3 font-mono text-sm text-terminal-ink leading-7 sm:px-4 sm:py-3.5 sm:text-base",
 );
 
 export function PackageCommand({ command, commands }: PackageCommandProps) {
@@ -93,14 +97,14 @@ export function PackageCommand({ command, commands }: PackageCommandProps) {
     <div className={cardClass}>
       <div className={headerClass}>
         <SquareTerminal
-          className="size-5 shrink-0 text-terminal-accent"
+          className="hidden size-5 shrink-0 text-terminal-accent sm:block"
           aria-hidden="true"
         />
         <div
           ref={tablist}
           role="tablist"
           aria-label="Package manager"
-          className="flex items-center gap-1"
+          className={tablistClass}
           onKeyDown={onKeyDown}
         >
           {PACKAGE_MANAGERS.map((manager) => (

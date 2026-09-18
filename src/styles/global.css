@@ -45,30 +45,45 @@
   --font-serif: var(--font-merriweather), serif;
   --font-sans: var(--font-fira-sans), sans-serif;
 
-  --text-body: 1.3rem;
-  --text-body--line-height: 1.75;
-  --leading-body: 1.75;
-  --text-h1: 4rem;
-  --text-h1--line-height: 1.2;
-  --text-h2: 1.8rem;
-  --text-h2--line-height: 1.2;
-  --text-h3: 1.5rem;
-  --text-h3--line-height: 1.2;
-  --text-h4: 1.4rem;
-  --text-h4--line-height: 1.2;
-  --text-h5: 1.3rem;
-  --text-h5--line-height: 1.2;
-  --text-h6: 1.2rem;
-  --text-h6--line-height: 1.2;
+  --text-body: clamp(1.0625rem, 0.95rem + 0.5vw, 1.3rem);
+  --text-body--line-height: 1.7;
+  --leading-body: 1.7;
+  --text-h1: clamp(2.25rem, 1.2rem + 4.6vw, 4.5rem);
+  --text-h1--line-height: 1.15;
+  --text-h2: clamp(1.45rem, 1.25rem + 0.9vw, 1.9rem);
+  --text-h2--line-height: 1.25;
+  --text-h3: clamp(1.25rem, 1.12rem + 0.6vw, 1.55rem);
+  --text-h3--line-height: 1.25;
+  --text-h4: clamp(1.15rem, 1.05rem + 0.5vw, 1.45rem);
+  --text-h4--line-height: 1.3;
+  --text-h5: clamp(1.0625rem, 1rem + 0.35vw, 1.3rem);
+  --text-h5--line-height: 1.3;
+  --text-h6: clamp(1rem, 0.96rem + 0.25vw, 1.2rem);
+  --text-h6--line-height: 1.3;
+  --text-code: clamp(0.8125rem, 0.74rem + 0.38vw, 1rem);
 
-  --breakpoint-sm: 32.5rem;
-  --breakpoint-md: 45rem;
-  --breakpoint-lg: 63.75rem;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
 }
 
 @layer base {
   html {
     overflow-y: scroll;
+  }
+
+  /* Everything sizes in rem, so this scales the whole page up on large displays. */
+  @media (width >= 100rem) {
+    html {
+      font-size: 17px;
+    }
+  }
+
+  @media (width >= 120rem) {
+    html {
+      font-size: 18px;
+    }
   }
 
   @supports (scrollbar-gutter: stable) {
@@ -79,7 +94,7 @@
   }
 
   body {
-    @apply m-0 bg-canvas font-serif text-[16px]/[1.6] text-ink;
+    @apply m-0 bg-canvas font-serif text-base/[1.6] text-ink;
   }
 
   a {
@@ -159,7 +174,7 @@
 
 .prose blockquote {
   margin: 2rem 0;
-  padding: 0 2rem;
+  padding: 0 clamp(1rem, 0.5rem + 2vw, 2rem);
   font-size: var(--text-h4);
   font-style: italic;
   font-weight: 400;
@@ -178,9 +193,14 @@
   font-weight: inherit;
 }
 
+/* Scrolls instead of squashing when the table is wider than the column. */
 .prose table {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
   font-family: var(--font-sans);
-  font-size: 1.125rem;
+  font-size: clamp(0.9375rem, 0.87rem + 0.35vw, 1.125rem);
 }
 
 .prose hr {
@@ -218,6 +238,14 @@
 
 .prose pre:not(.not-prose *) {
   border-radius: 8px;
-  padding: 1.2em;
-  font-size: 1rem;
+  padding: 1.1em 1.2em;
+  font-size: var(--text-code);
+}
+
+/* Phones read code wrapped rather than scrolling every block sideways. */
+@media (width < 40rem) {
+  .prose pre:not(.not-prose *) {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+  }
 }

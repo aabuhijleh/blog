@@ -63,15 +63,15 @@ const collectPreviews = (
   });
 
 const cardClass = cn(
-  "not-prose my-8 flex flex-col gap-2 rounded-lg border border-muted/30 bg-canvas p-2 font-sans text-base lg:-mx-8 lg:flex-row",
+  "not-prose my-8 flex flex-col gap-2 rounded-lg border border-muted/30 bg-canvas p-2 font-sans text-sm sm:text-base lg:-mx-8 lg:flex-row",
 );
 
 const treeClass = cn(
-  "max-h-64 min-w-0 overflow-auto lg:max-h-120 lg:w-72 lg:shrink-0 lg:pr-1",
+  "min-w-0 lg:max-h-120 lg:w-72 lg:shrink-0 lg:overflow-auto lg:pr-1",
 );
 
 const previewClass = cn(
-  "flex max-h-80 min-w-0 flex-1 overflow-hidden rounded-md bg-terminal lg:max-h-120",
+  "flex min-w-0 flex-1 rounded-md bg-terminal lg:max-h-120 lg:overflow-hidden",
 );
 
 const emptyClass = cn(
@@ -227,7 +227,9 @@ export function FileTreeView({
                 aria-hidden="true"
               />
             )}
-            <span className="truncate">{node.name}</span>
+            <span className="wrap-break-word min-w-0 lg:truncate">
+              {node.name}
+            </span>
           </div>
           {isFolder && (
             // biome-ignore lint/a11y/useSemanticElements: a tree needs role="group", not a fieldset

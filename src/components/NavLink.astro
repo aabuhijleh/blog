@@ -10,7 +10,7 @@ const subpath = pathname.match(/[^/]+/g);
 const isActive = href === pathname || href === `/${subpath?.[0] || ""}`;
 
 const linkClass = cn(
-  "relative ml-5 block min-w-17.5 px-1.25 py-2.5 text-center text-inherit no-underline before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-in-out before:content-[''] hover:before:scale-x-100",
+  "relative block shrink-0 px-2 py-2.5 text-center text-inherit no-underline before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-in-out before:content-[''] hover:before:scale-x-100 sm:min-w-17.5 sm:px-1.25",
   isActive
     ? "before:scale-x-100 before:bg-accent"
     : "opacity-70 before:bg-muted",

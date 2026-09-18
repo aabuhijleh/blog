@@ -5,28 +5,28 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <div class="my-8 flex flex-1 items-center justify-center max-md:flex-col">
-    <div class="flex-1 px-4 max-md:flex-none max-md:pb-8 max-md:text-center">
-      <h1
-        class="mb-8 font-serif text-h1 font-bold max-lg:mb-6 max-lg:text-5xl/tight"
-      >
-        Hi, I'm Abed
-      </h1>
-      <p class="text-h4 leading-body max-lg:text-xl">
+  <div
+    class="my-8 flex flex-1 flex-col items-center justify-center gap-8 lg:flex-row lg:gap-12"
+  >
+    <div
+      class="w-full max-w-xl text-center lg:max-w-none lg:flex-1 lg:text-left"
+    >
+      <h1 class="mb-6 font-serif font-bold text-h1 lg:mb-8">Hi, I'm Abed</h1>
+      <p class="text-h4 leading-body">
         I build things for the web. Nowadays, robots write the code for me. I
         write up the problems that kept me up too late.
         <a href="/blog">Start with the latest one</a>.
       </p>
     </div>
 
-    <div class="mx-4 shrink-0 text-center">
+    <div class="w-full max-w-155 lg:flex-1">
       <Image
         loading="eager"
         src="/assets/illustrations/retro-computer.svg"
         alt="A retro desktop computer with a green screen full of code, a keyboard and mouse on the desk"
         width="722"
         height="291"
-        class="mb-4 h-auto w-155 max-w-full max-lg:w-120"
+        class="h-auto w-full"
       />
     </div>
   </div>

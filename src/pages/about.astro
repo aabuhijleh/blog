@@ -71,23 +71,19 @@ const stack: Tech[] = [
 ];
 
 const chipClass = cn(
-  "group flex items-center gap-2.5 rounded-full border border-muted/30 bg-muted/10 px-4 py-2 font-sans text-lg no-underline transition duration-200 hover:-translate-y-1 hover:rotate-0 hover:border-accent",
+  "group flex items-center gap-2 rounded-full border border-muted/30 bg-muted/10 px-3 py-1.5 font-sans text-base no-underline transition duration-200 hover:-translate-y-1 hover:rotate-0 hover:border-accent sm:gap-2.5 sm:px-4 sm:py-2 sm:text-lg",
 );
 
 const logoClass = cn(
-  "h-6 w-auto transition-transform duration-200 group-hover:scale-115",
+  "h-5 w-auto transition-transform duration-200 group-hover:scale-115 sm:h-6",
 );
 ---
 
 <BaseLayout title={title} description={description}>
-  <div class="mx-auto w-full max-w-3xl">
-    <h1
-      class="mb-16 font-serif font-bold text-h1 max-lg:mb-12 max-lg:text-5xl/tight"
-    >
-      About
-    </h1>
+  <div class="mx-auto w-full max-w-2xl">
+    <h1 class="mb-10 font-serif font-bold text-h1 sm:mb-12">About</h1>
     <figure
-      class="float-right -mt-12 -mr-28 mb-8 ml-8 max-w-75 max-lg:float-none max-lg:mx-auto max-lg:mt-0"
+      class="mx-auto mb-8 max-w-55 sm:max-w-75 lg:float-right lg:mx-0 lg:-mt-12 lg:-mr-28 lg:ml-8"
     >
       <Image
         loading="eager"
@@ -105,7 +101,7 @@ const logoClass = cn(
       <p>My tech stack these days:</p>
     </div>
 
-    <ul class="my-8 flex list-none flex-wrap gap-3 p-0">
+    <ul class="my-8 flex list-none flex-wrap gap-2 p-0 sm:gap-3">
       {stack.map((tech, index) => (
   <li>
     <a
