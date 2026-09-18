@@ -37,7 +37,10 @@ export default defineConfig({
     shikiConfig: {
       theme: CODE_THEME,
     },
-    processor: satteri({ hastPlugins: [externalLinks, images] }),
+    processor: satteri({
+      features: { rawHtml: true },
+      hastPlugins: [externalLinks, images],
+    }),
   },
 
   vite: {
