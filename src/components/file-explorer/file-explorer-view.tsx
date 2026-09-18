@@ -182,7 +182,7 @@ export function FileExplorerView({
           role="treeitem"
           aria-label={node.name}
           aria-expanded={isFolder ? isOpen : undefined}
-          aria-selected={isFolder ? undefined : isSelected}
+          aria-selected={isSelected}
           tabIndex={focused === path ? 0 : -1}
           ref={(element) => {
             if (element) items.current.set(path, element);
