@@ -1,7 +1,6 @@
 import satori from "satori";
 import sharp from "sharp";
 import { SITE_AUTHOR } from "~/consts";
-import type { Illustration } from "~/lib/illustrations";
 import {
   fonts,
   loadAvatar,
@@ -23,7 +22,7 @@ export interface OgImageInput {
   subtitle?: string;
   pubDate?: Date;
   tags?: Array<string>;
-  illustration?: Illustration;
+  illustration?: ImageMetadata;
 }
 
 const monthAndYear = (date: Date) =>

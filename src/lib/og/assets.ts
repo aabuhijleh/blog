@@ -4,7 +4,6 @@ import avatarSvg from "~/assets/avatar.svg?raw";
 import firaSans from "~/assets/fonts/fira-sans-latin-400-normal.woff?inline";
 import firaSansBold from "~/assets/fonts/fira-sans-latin-700-normal.woff?inline";
 import merriweatherBold from "~/assets/fonts/merriweather-latin-700-normal.woff?inline";
-import type { Illustration } from "~/lib/illustrations";
 
 const SUPERSAMPLE = 2;
 const ACCENT = "#548e9b";
@@ -104,23 +103,27 @@ let squiggle: Promise<Raster> | undefined;
 export const loadSquiggle = (box: Box) =>
   (squiggle ??= rasterize(Buffer.from(squiggleSvg(box)), box));
 
-const illustrationSources = Object.fromEntries(
-  Object.entries(
-    import.meta.glob("/src/assets/illustrations/*.svg", {
-      query: "?raw",
-      import: "default",
-      eager: true,
-    }),
-  ).map(([file, svg]) => [file.replace(/.*\/|\.svg$/g, ""), svg as string]),
-) as Record<Illustration, string>;
+const metaByFile = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/illustrations/*.svg",
+  { eager: true },
+);
 
-export const loadIllustration = (name: Illustration, box: Box) => {
-  const svg = illustrationSources[name];
-  if (!svg) {
-    throw new Error(
-      `No illustration named '${name}' in src/assets/illustrations.`,
-    );
-  }
+const rawByFile = import.meta.glob<string>("/src/assets/illustrations/*.svg", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+});
+
+const sourceBySrc = new Map(
+  Object.entries(metaByFile).map(([file, module]) => [
+    module.default.src,
+    rawByFile[file],
+  ]),
+);
+
+export const loadIllustration = (image: ImageMetadata, box: Box) => {
+  const svg = sourceBySrc.get(image.src);
+  if (!svg) throw new Error(`No SVG source behind '${image.src}'.`);
 
   return rasterize(Buffer.from(svg), box);
 };

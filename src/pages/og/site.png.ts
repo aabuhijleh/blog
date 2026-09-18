@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import retroComputer from "~/assets/illustrations/retro-computer.svg";
 import { SITE_DESCRIPTION, SITE_TITLE } from "~/consts";
 import { renderOgImage } from "~/lib/og/render";
 
@@ -12,7 +13,7 @@ export const GET: APIRoute = async ({ site }) => {
   const png = await renderOgImage({
     title: SITE_TITLE,
     subtitle: SITE_DESCRIPTION,
-    illustration: "retro-computer",
+    illustration: retroComputer,
     site,
   });
 
