@@ -73,19 +73,6 @@
     overflow-y: scroll;
   }
 
-  /* Everything sizes in rem, so this scales the whole page up on large displays. */
-  @media (width >= 100rem) {
-    html {
-      font-size: 17px;
-    }
-  }
-
-  @media (width >= 120rem) {
-    html {
-      font-size: 18px;
-    }
-  }
-
   @supports (scrollbar-gutter: stable) {
     html {
       overflow-y: auto;
@@ -240,12 +227,4 @@
   border-radius: 8px;
   padding: 1.1em 1.2em;
   font-size: var(--text-code);
-}
-
-/* Phones read code wrapped rather than scrolling every block sideways. */
-@media (width < 40rem) {
-  .prose pre:not(.not-prose *) {
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
-  }
 }

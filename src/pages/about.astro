@@ -101,14 +101,14 @@ const logoClass = cn(
       <p>My tech stack these days:</p>
     </div>
 
-    <ul class="my-8 flex list-none flex-wrap gap-2 p-0 sm:gap-3">
+    <ul class="my-8 flex list-none flex-wrap gap-2.5 p-0 sm:gap-3">
       {stack.map((tech, index) => (
   <li>
     <a
       href={tech.href}
       target="_blank"
       rel="noopener"
-      class={cn(chipClass, index % 2 === 0 ? "rotate-2" : "-rotate-2")}
+      class={cn(chipClass, index % 2 === 0 ? "sm:rotate-2" : "sm:-rotate-2")}
     >
       <Image
         loading="eager"
