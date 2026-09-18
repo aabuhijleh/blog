@@ -1,50 +1,50 @@
 ---
-import { type FileTreeSource, highlightFileTree } from "~/lib/file-tree";
-import { FileTreeView } from "./FileTreeView";
+import { FileExplorerView } from "./file-explorer-view";
+import { highlightTree } from "./highlight";
+import type { FileExplorerSource } from "./types";
 
 interface Props {
-  tree: FileTreeSource[];
+  tree: FileExplorerSource[];
   label?: string;
-  emptyLabel?: string;
   defaultExpanded?: string[];
   defaultExpandedDepth?: number;
 }
 
 const { tree, ...rest } = Astro.props;
 
-const nodes = await highlightFileTree(tree);
+const nodes = await highlightTree(tree);
 ---
 
-<FileTreeView client:visible tree={nodes} {...rest} />
+<FileExplorerView client:visible tree={nodes} {...rest} />
 
 <style is:global>
-  [data-file-tree-group] {
+  [data-file-explorer-group] {
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 0.2s ease;
   }
 
-  [data-file-tree-group][data-expanded="true"] {
+  [data-file-explorer-group][data-expanded="true"] {
     grid-template-rows: 1fr;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    [data-file-tree-group] {
+    [data-file-explorer-group] {
       transition: none;
     }
   }
 
-  [data-file-tree-item]:focus-visible > [data-file-tree-row] {
+  [data-file-explorer-item]:focus-visible > [data-file-explorer-row] {
     outline: 2px solid var(--color-accent);
     outline-offset: -2px;
   }
 
-  [data-file-tree-preview] > div {
+  [data-file-explorer-preview] > div {
     display: contents;
   }
 
   /* Wraps on small screens so a file reads in full without a scrollbar. */
-  [data-file-tree-preview] pre {
+  [data-file-explorer-preview] pre {
     flex: 1;
     min-width: 0;
     padding: 0.75rem 0.85rem;
@@ -55,7 +55,7 @@ const nodes = await highlightFileTree(tree);
   }
 
   @media (width >= 64rem) {
-    [data-file-tree-preview] pre {
+    [data-file-explorer-preview] pre {
       overflow: auto;
       white-space: pre;
     }

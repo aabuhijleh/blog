@@ -1,10 +1,10 @@
 import { ChevronRight, File, Folder, FolderOpen } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 import { cn } from "~/lib/cn";
-import type { FileTreeNode } from "~/lib/file-tree";
+import type { FileExplorerNode } from "./types";
 
-interface FileTreeViewProps {
-  tree: FileTreeNode[];
+interface FileExplorerViewProps {
+  tree: FileExplorerNode[];
   label?: string;
   defaultExpanded?: string[];
   defaultExpandedDepth?: number;
@@ -25,7 +25,7 @@ const ancestorPaths = (path: string) => {
 };
 
 const foldersWithinDepth = (
-  nodes: FileTreeNode[],
+  nodes: FileExplorerNode[],
   maxDepth: number,
   depth = 0,
   parentPath = "",
@@ -40,7 +40,7 @@ const foldersWithinDepth = (
   });
 
 const flattenVisible = (
-  nodes: FileTreeNode[],
+  nodes: FileExplorerNode[],
   expanded: ReadonlySet<string>,
   parentPath = "",
 ): VisibleNode[] =>
@@ -53,7 +53,7 @@ const flattenVisible = (
   });
 
 const collectPreviews = (
-  nodes: FileTreeNode[],
+  nodes: FileExplorerNode[],
   parentPath = "",
 ): [string, string][] =>
   nodes.flatMap((node) => {
@@ -84,12 +84,12 @@ const rowClass = cn(
 
 const groupClass = cn("ml-3 border-muted/25 border-l pl-2");
 
-export function FileTreeView({
+export function FileExplorerView({
   tree,
   label = "File tree",
   defaultExpanded,
   defaultExpandedDepth = 1,
-}: FileTreeViewProps) {
+}: FileExplorerViewProps) {
   const previews = useMemo(() => new Map(collectPreviews(tree)), [tree]);
   const firstFile = previews.keys().next().value ?? null;
   const [expanded, setExpanded] = useState(
@@ -168,7 +168,7 @@ export function FileTreeView({
     event.preventDefault();
   };
 
-  const renderNodes = (nodes: FileTreeNode[], parentPath: string) =>
+  const renderNodes = (nodes: FileExplorerNode[], parentPath: string) =>
     nodes.map((node) => {
       const path = joinPath(parentPath, node.name);
       const isFolder = Boolean(node.children);
@@ -188,7 +188,7 @@ export function FileTreeView({
             if (element) items.current.set(path, element);
             else items.current.delete(path);
           }}
-          data-file-tree-item
+          data-file-explorer-item
           className="outline-none"
           onFocus={(event) => {
             if (event.target === event.currentTarget) setFocused(path);
@@ -199,7 +199,7 @@ export function FileTreeView({
           }}
         >
           <div
-            data-file-tree-row
+            data-file-explorer-row
             className={cn(rowClass, isSelected && "bg-accent/15 text-accent")}
           >
             <ChevronRight
@@ -235,7 +235,7 @@ export function FileTreeView({
             // biome-ignore lint/a11y/useSemanticElements: a tree needs role="group", not a fieldset
             <div
               role="group"
-              data-file-tree-group
+              data-file-explorer-group
               data-expanded={isOpen}
               inert={!isOpen}
             >
@@ -251,7 +251,7 @@ export function FileTreeView({
     });
 
   return (
-    <div data-file-tree-card className={cardClass}>
+    <div data-file-explorer-card className={cardClass}>
       <div
         role="tree"
         aria-label={label}
@@ -261,7 +261,7 @@ export function FileTreeView({
         {renderNodes(tree, "")}
       </div>
       <section
-        data-file-tree-preview
+        data-file-explorer-preview
         className={previewClass}
         aria-label={selected ?? "File preview"}
       >

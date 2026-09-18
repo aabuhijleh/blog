@@ -1,23 +1,23 @@
 ---
-title: 'Two interactive MDX components'
-description: 'A package manager command block and a file tree, both loadable from MDX.'
-pubDate: 'Sep 17 2026'
-tags: ['MDX', 'Astro', 'React']
-illustration: 'retro-computer'
+title: "Two interactive MDX components"
+description: "A package manager command block and a file explorer, both loadable from MDX."
+pubDate: "Sep 17 2026"
+tags: ["MDX", "Astro", "React"]
+illustration: "retro-computer"
 ---
 
 Two components I use in posts. Both take plain data props, so they work anywhere MDX does.
 
-import FileTree from '~/components/FileTree.astro';
-import { PackageCommand } from '~/components/PackageCommand';
-import { blogSource } from './mdx-components.tree';
+import { FileExplorer } from "~/components/file-explorer";
+import { PackageCommand } from "~/components/PackageCommand";
+import { blogSource } from "./mdx-components.tree";
 
 ## Package manager commands
 
 Write the npm version of a command. The component derives the pnpm, yarn, and bun equivalents.
 
 ```mdx
-import { PackageCommand } from '~/components/PackageCommand';
+import { PackageCommand } from "~/components/PackageCommand";
 
 <PackageCommand client:visible command="npx shadcn@latest add accordion" />
 ```
@@ -36,33 +36,33 @@ Pass `commands` to override any of the four when the translation is wrong.
 <PackageCommand
   client:visible
   command="npm install sharp"
-  commands={{ bun: 'bun add sharp --trust' }}
+  commands={{ bun: "bun add sharp --trust" }}
 />
 ```
 
-## File tree
+## File explorer
 
 Click a folder to open it, click a file to read it. Arrow keys move through the tree, and `Enter` opens the focused folder or reads the focused file.
 
 ```mdx
-import FileTree from '~/components/FileTree.astro';
+import { FileExplorer } from "~/components/file-explorer";
 
-<FileTree
+<FileExplorer
   label="Blog source"
   tree={[
     {
-      name: 'src',
+      name: "src",
       children: [
-        { name: 'consts.ts', content: `export const SITE_AUTHOR = 'Abed';` },
+        { name: "consts.ts", content: `export const SITE_AUTHOR = 'Abed';` },
       ],
     },
   ]}
 />
 ```
 
-<FileTree
+<FileExplorer
   label="Blog source"
-  defaultExpanded={['src', 'src/components']}
+  defaultExpanded={["src", "src/components"]}
   tree={blogSource}
 />
 

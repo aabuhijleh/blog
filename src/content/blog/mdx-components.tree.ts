@@ -1,12 +1,13 @@
-import type { FileTreeSource } from "~/lib/file-tree";
+import type { FileExplorerSource } from "~/components/file-explorer";
 
-const fileTreeAstro = `
+const fileExplorerAstro = `
 ---
-import { type FileTreeSource, highlightFileTree } from "~/lib/file-tree";
-import { FileTreeView } from "./FileTreeView";
+import { FileExplorerView } from "./file-explorer-view";
+import { highlightTree } from "./highlight";
+import type { FileExplorerSource } from "./types";
 
 interface Props {
-  tree: FileTreeSource[];
+  tree: FileExplorerSource[];
   label?: string;
   defaultExpanded?: string[];
   defaultExpandedDepth?: number;
@@ -14,24 +15,24 @@ interface Props {
 
 const { tree, ...rest } = Astro.props;
 
-const nodes = await highlightFileTree(tree);
+const nodes = await highlightTree(tree);
 ---
 
-<FileTreeView client:visible tree={nodes} {...rest} />
+<FileExplorerView client:visible tree={nodes} {...rest} />
 `;
 
-const fileTreeView = `
-export function FileTreeView({ tree, label = "File tree" }: FileTreeViewProps) {
+const fileExplorerView = `
+export function FileExplorerView({ tree, label = "File explorer" }: FileExplorerViewProps) {
   const previews = useMemo(() => new Map(collectPreviews(tree)), [tree]);
   const [selected, setSelected] = useState(firstFile);
   const preview = selected ? previews.get(selected) : undefined;
 
   return (
-    <div data-file-tree-card className={cardClass}>
+    <div data-file-explorer-card className={cardClass}>
       <div role="tree" aria-label={label} onKeyDown={onKeyDown}>
         {renderNodes(tree, "")}
       </div>
-      <section data-file-tree-preview className={previewClass}>
+      <section data-file-explorer-preview className={previewClass}>
         {preview ? (
           <div dangerouslySetInnerHTML={{ __html: preview }} />
         ) : (
@@ -44,13 +45,13 @@ export function FileTreeView({ tree, label = "File tree" }: FileTreeViewProps) {
 `;
 
 const highlighter = `
-export const highlightFileTree = async (
-  nodes: FileTreeSource[],
-): Promise<FileTreeNode[]> =>
+export const highlightTree = async (
+  nodes: FileExplorerSource[],
+): Promise<FileExplorerNode[]> =>
   Promise.all(
     nodes.map(async ({ name, content, children }) => {
-      const node: FileTreeNode = { name };
-      if (children) node.children = await highlightFileTree(children);
+      const node: FileExplorerNode = { name };
+      if (children) node.children = await highlightTree(children);
       if (content) {
         node.html = await codeToHtml(content.trim(), {
           lang: languageOf(name),
@@ -62,23 +63,28 @@ export const highlightFileTree = async (
   );
 `;
 
+const barrel = `
+export { default as FileExplorer } from "./file-explorer.astro";
+export type { FileExplorerSource } from "./types";
+`;
+
 const globalCss = `
-[data-file-tree-group] {
+[data-file-explorer-group] {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.2s ease;
 }
 
-[data-file-tree-group][data-expanded="true"] {
+[data-file-explorer-group][data-expanded="true"] {
   grid-template-rows: 1fr;
 }
 
-[data-file-tree-item]:focus-visible > [data-file-tree-row] {
+[data-file-explorer-item]:focus-visible > [data-file-explorer-row] {
   outline: 2px solid var(--color-accent);
   outline-offset: -2px;
 }
 
-[data-file-tree-preview] pre {
+[data-file-explorer-preview] pre {
   flex: 1;
   min-width: 0;
   overflow: auto;
@@ -98,24 +104,29 @@ export default defineConfig({
 });
 `;
 
-export const blogSource: FileTreeSource[] = [
+export const blogSource: FileExplorerSource[] = [
   {
     name: "src",
     children: [
       {
         name: "components",
         children: [
-          { name: "FileTree.astro", content: fileTreeAstro },
-          { name: "FileTreeView.tsx", content: fileTreeView },
+          {
+            name: "file-explorer",
+            children: [
+              { name: "index.ts", content: barrel },
+              { name: "file-explorer.astro", content: fileExplorerAstro },
+              { name: "file-explorer-view.tsx", content: fileExplorerView },
+              { name: "highlight.ts", content: highlighter },
+              { name: "types.ts" },
+            ],
+          },
           { name: "PackageCommand.tsx" },
         ],
       },
       {
         name: "lib",
-        children: [
-          { name: "file-tree.ts", content: highlighter },
-          { name: "package-commands.ts" },
-        ],
+        children: [{ name: "package-commands.ts" }],
       },
       {
         name: "styles",

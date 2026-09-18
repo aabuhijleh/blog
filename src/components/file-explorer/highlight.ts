@@ -1,17 +1,6 @@
 import { codeToHtml } from "shiki";
 import { CODE_THEME } from "~/consts";
-
-export interface FileTreeSource {
-  name: string;
-  content?: string;
-  children?: FileTreeSource[];
-}
-
-export interface FileTreeNode {
-  name: string;
-  html?: string;
-  children?: FileTreeNode[];
-}
+import type { FileExplorerNode, FileExplorerSource } from "./types";
 
 const LANGUAGES: Record<string, string> = {
   astro: "astro",
@@ -34,13 +23,13 @@ const LANGUAGES: Record<string, string> = {
 const languageOf = (name: string) =>
   LANGUAGES[name.split(".").pop()?.toLowerCase() ?? ""] ?? "text";
 
-export const highlightFileTree = async (
-  nodes: FileTreeSource[],
-): Promise<FileTreeNode[]> =>
+export const highlightTree = async (
+  nodes: FileExplorerSource[],
+): Promise<FileExplorerNode[]> =>
   Promise.all(
     nodes.map(async ({ name, content, children }) => {
-      const node: FileTreeNode = { name };
-      if (children) node.children = await highlightFileTree(children);
+      const node: FileExplorerNode = { name };
+      if (children) node.children = await highlightTree(children);
       if (content) {
         node.html = await codeToHtml(content.trim(), {
           lang: languageOf(name),
