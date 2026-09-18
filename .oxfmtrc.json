@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "sortImports": true,
+  "sortTailwindcss": {
+    "functions": ["cn"],
+    "stylesheet": "src/styles/global.css"
+  }
+}

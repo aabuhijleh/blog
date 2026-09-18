@@ -1,36 +1,18 @@
 {
   "editor.formatOnSave": true,
-  "editor.quickSuggestions": { "strings": "on" },
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "[astro]": { "editor.defaultFormatter": "astro-build.astro-vscode" },
   "editor.codeActionsOnSave": {
-    "source.fixAll.biome": "explicit",
-    "source.organizeImports.biome": "explicit"
+    "source.fixAll.oxc": "explicit"
   },
+  "editor.quickSuggestions": { "strings": "on" },
 
-  "[astro]": { "editor.defaultFormatter": "biomejs.biome" },
-  "[javascript]": { "editor.defaultFormatter": "biomejs.biome" },
-  "[javascriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
-  "[typescript]": { "editor.defaultFormatter": "biomejs.biome" },
-  "[typescriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
-  "[json]": { "editor.defaultFormatter": "biomejs.biome" },
-  "[jsonc]": { "editor.defaultFormatter": "biomejs.biome" },
-  "[css]": { "editor.defaultFormatter": "biomejs.biome" },
-  "[tailwindcss]": { "editor.defaultFormatter": "biomejs.biome" },
-  "[html]": { "editor.defaultFormatter": "biomejs.biome" },
-  "[graphql]": { "editor.defaultFormatter": "biomejs.biome" },
-
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "astro"
-  ],
+  "biome.enabled": false,
+  "eslint.enable": false,
 
   "tailwindCSS.includeLanguages": { "astro": "html" },
   "tailwindCSS.classAttributes": ["class", "className"],
   "tailwindCSS.classFunctions": ["cn"],
-
-  "files.associations": { "*.css": "tailwindcss" },
 
   // TypeScript 7 has no plugin support, which @astrojs/ts-plugin needs
   "js/ts.experimental.useTsgo": false

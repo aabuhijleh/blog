@@ -1,13 +1,12 @@
 import type { APIRoute } from "astro";
+
 import retroComputer from "~/assets/illustrations/retro-computer.svg";
 import { SITE_DESCRIPTION, SITE_TITLE } from "~/consts";
 import { renderOgImage } from "~/lib/og/render";
 
 export const GET: APIRoute = async ({ site }) => {
   if (!site) {
-    throw new Error(
-      "`site` must be set in astro.config.ts to build Open Graph images.",
-    );
+    throw new Error("`site` must be set in astro.config.ts to build Open Graph images.");
   }
 
   const png = await renderOgImage({

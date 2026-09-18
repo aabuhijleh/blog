@@ -19,8 +19,7 @@ export const images: HastPlugin = {
       }
 
       const path = typeof src === "string" ? decodeURI(src) : undefined;
-      const isLocal =
-        path !== undefined && !URL.canParse(path) && !path.startsWith("/");
+      const isLocal = path !== undefined && !URL.canParse(path) && !path.startsWith("/");
 
       if (!isLocal) {
         ctx.setProperty(node, "loading", "lazy");

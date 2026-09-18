@@ -207,18 +207,9 @@ export const ogCard = ({
             border: "2px solid rgba(84, 142, 155, 0.45)",
           }),
           h("span", { display: "flex", marginRight: 8 }, "by"),
-          h(
-            "span",
-            { display: "flex", fontWeight: 700, color: palette.accent },
-            author,
-          ),
+          h("span", { display: "flex", fontWeight: 700, color: palette.accent }, author),
         ),
-        tagsLine &&
-          h(
-            "div",
-            { display: "flex", fontSize: 22, letterSpacing: "0.04em" },
-            tagsLine,
-          ),
+        tagsLine && h("div", { display: "flex", fontSize: 22, letterSpacing: "0.04em" }, tagsLine),
       ),
     ),
   );

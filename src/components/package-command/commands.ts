@@ -62,9 +62,7 @@ const build = (prefixes: PackageCommands, parts: (string | undefined)[]) =>
   ) as PackageCommands;
 
 const same = (command: string) =>
-  Object.fromEntries(
-    PACKAGE_MANAGERS.map((manager) => [manager, command]),
-  ) as PackageCommands;
+  Object.fromEntries(PACKAGE_MANAGERS.map((manager) => [manager, command])) as PackageCommands;
 
 const withDevFlag = (prefixes: PackageCommands, args: string[]) => {
   const isDev = args.some((arg) => DEV_FLAGS.has(arg));
@@ -72,9 +70,7 @@ const withDevFlag = (prefixes: PackageCommands, args: string[]) => {
   return Object.fromEntries(
     PACKAGE_MANAGERS.map((manager) => [
       manager,
-      [prefixes[manager], isDev ? DEV_FLAG[manager] : undefined, rest]
-        .filter(Boolean)
-        .join(" "),
+      [prefixes[manager], isDev ? DEV_FLAG[manager] : undefined, rest].filter(Boolean).join(" "),
     ]),
   ) as PackageCommands;
 };

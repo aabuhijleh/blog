@@ -1,7 +1,9 @@
 import { useStore } from "@nanostores/react";
 import { Check, Copy, SquareTerminal } from "lucide-react";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
+
 import { cn } from "~/lib/cn";
+
 import { type PackageCommands, toPackageCommands } from "./commands";
 import {
   $packageManager,
@@ -22,15 +24,15 @@ const cardClass = cn(
 );
 
 const headerClass = cn(
-  "flex items-center gap-1.5 border-terminal-edge border-b px-2 py-2 sm:gap-2 sm:px-3",
+  "flex items-center gap-1.5 border-b border-terminal-edge px-2 py-2 sm:gap-2 sm:px-3",
 );
 
 const tablistClass = cn(
-  "scrollbar-none flex min-w-0 flex-1 items-center gap-1 overflow-x-auto [&::-webkit-scrollbar]:hidden",
+  "flex min-w-0 flex-1 scrollbar-none items-center gap-1 overflow-x-auto [&::-webkit-scrollbar]:hidden",
 );
 
 const tabClass = cn(
-  "shrink-0 cursor-pointer rounded-md border border-transparent px-2 py-1 font-mono text-terminal-muted text-xs leading-6 transition-colors hover:text-terminal-bright sm:px-2.5 sm:text-sm",
+  "shrink-0 cursor-pointer rounded-md border border-transparent px-2 py-1 font-mono text-xs leading-6 text-terminal-muted transition-colors hover:text-terminal-bright sm:px-2.5 sm:text-sm",
 );
 
 const copyClass = cn(
@@ -38,8 +40,12 @@ const copyClass = cn(
 );
 
 const commandClass = cn(
-  "overflow-x-auto px-3 py-3 font-mono text-sm text-terminal-ink leading-7 sm:px-4 sm:py-3.5 sm:text-base",
+  "overflow-x-auto px-3 py-3 font-mono text-sm leading-7 text-terminal-ink sm:px-4 sm:py-3.5 sm:text-base",
 );
+
+const select = (manager: PackageManager) => {
+  $packageManager.set(manager);
+};
 
 export function PackageCommand({ command, commands }: PackageCommandProps) {
   const selected = useStore($packageManager, { ssr: serverSnapshot });
@@ -55,10 +61,6 @@ export function PackageCommand({ command, commands }: PackageCommandProps) {
 
   useEffect(() => () => clearTimeout(resetCopied.current), []);
 
-  const select = (manager: PackageManager) => {
-    $packageManager.set(manager);
-  };
-
   const copy = async () => {
     await navigator.clipboard.writeText(resolved[selected]);
     setCopied(true);
@@ -69,9 +71,7 @@ export function PackageCommand({ command, commands }: PackageCommandProps) {
   const moveFocus = (offset: number) => {
     const index = PACKAGE_MANAGERS.indexOf(selected);
     const next =
-      PACKAGE_MANAGERS[
-        (index + offset + PACKAGE_MANAGERS.length) % PACKAGE_MANAGERS.length
-      ];
+      PACKAGE_MANAGERS[(index + offset + PACKAGE_MANAGERS.length) % PACKAGE_MANAGERS.length];
     if (!next) return;
     select(next);
     tablist.current
@@ -97,6 +97,7 @@ export function PackageCommand({ command, commands }: PackageCommandProps) {
           className="hidden size-5 shrink-0 text-terminal-accent sm:block"
           aria-hidden="true"
         />
+        {/* oxlint-disable-next-line jsx-a11y/interactive-supports-focus -- the tabs carry the roving tabindex */}
         <div
           ref={tablist}
           role="tablist"
@@ -127,9 +128,7 @@ export function PackageCommand({ command, commands }: PackageCommandProps) {
           ) : (
             <Copy className="size-4.5" />
           )}
-          <span className="sr-only">
-            {copied ? "Command copied" : "Copy command"}
-          </span>
+          <span className="sr-only">{copied ? "Command copied" : "Copy command"}</span>
         </button>
       </div>
       {PACKAGE_MANAGERS.map((manager) => (

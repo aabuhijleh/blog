@@ -3,8 +3,9 @@ import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig, fontProviders } from "astro/config";
 import og from "astro-og";
+import { defineConfig, fontProviders } from "astro/config";
+
 import { CODE_THEME } from "./src/consts";
 import { externalLinks } from "./src/markdown/external-links";
 import { images } from "./src/markdown/images";

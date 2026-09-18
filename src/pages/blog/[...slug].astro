@@ -27,19 +27,16 @@ const estimate = readingTime(post.body ?? "").text;
 >
   <header class="text-center">
     <p class="font-bold font-sans text-muted text-sm uppercase sm:text-body">
-      <FormattedDate date={pubDate} />
-      ~ {estimate}
+      <FormattedDate date={pubDate} />~ {estimate}
     </p>
-    <h1 class="mb-8 font-serif font-bold text-h1 lg:mb-11">
-      {title}
-    </h1>
-    <hr class="squiggle mx-auto my-8 w-3/10 min-w-25 sm:my-10">
+    <h1 class="mb-8 font-serif font-bold text-h1 lg:mb-11">{title}</h1>
+    <hr class="squiggle mx-auto my-8 w-3/10 min-w-25 sm:my-10" />
   </header>
   <div class="mx-auto w-full max-w-3xl">
     <article class="prose">
       <Content />
     </article>
-    <hr class="squiggle my-10">
+    <hr class="squiggle my-10" />
     <Bio />
   </div>
 </BaseLayout>

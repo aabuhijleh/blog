@@ -16,8 +16,7 @@ export const $packageManager = persistentAtom<PackageManager>(
   DEFAULT_PACKAGE_MANAGER,
   {
     encode: String,
-    decode: (value) =>
-      isPackageManager(value) ? value : DEFAULT_PACKAGE_MANAGER,
+    decode: (value) => (isPackageManager(value) ? value : DEFAULT_PACKAGE_MANAGER),
   },
 );
 

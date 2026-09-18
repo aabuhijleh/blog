@@ -1,10 +1,6 @@
 {
   "name": "blog",
   "type": "module",
-  "packageManager": "bun@1.4.2",
-  "engines": {
-    "node": ">=24"
-  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -12,10 +8,14 @@
     "deploy": "astro build && wrangler deploy",
     "astro": "astro",
     "astro:check": "astro check",
-    "biome:check": "biome check",
-    "biome:fix": "biome check --write",
-    "eslint:check": "eslint --no-warn-ignored",
-    "verify": "bun run --parallel astro:check biome:check eslint:check",
+    "lint": "oxlint --deny-warnings",
+    "lint:fix": "oxlint --fix --deny-warnings",
+    "format:check": "oxfmt --check",
+    "format:fix": "oxfmt",
+    "prettier:check": "prettier --check \"**/*.astro\"",
+    "prettier:fix": "prettier --write \"**/*.astro\"",
+    "verify": "bun run --parallel astro:check lint format:check prettier:check",
+    "verify:fix": "bun run --parallel astro:check lint:fix format:fix prettier:fix",
     "prepare": "lefthook install"
   },
   "dependencies": {
@@ -43,20 +43,22 @@
   "devDependencies": {
     "@astrojs/check": "0.9.10",
     "@astrojs/ts-plugin": "^1.10.12",
-    "@biomejs/biome": "2.5.14",
-    "@shadcn/lint": "^0.1.0",
     "@tailwindcss/typography": "0.5.20",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "@typescript-eslint/parser": "^8.70.0",
-    "astro-eslint-parser": "^3.1.0",
     "astro-og": "^0.3.2",
-    "eslint": "^10.10.0",
-    "jiti": "^2.7.0",
     "lefthook": "2.1.14",
+    "oxfmt": "^0.68.0",
+    "oxlint": "^1.83.0",
+    "prettier": "^3.9.8",
+    "prettier-plugin-astro": "^1.0.1",
     "typescript": "6.0.3",
     "wrangler": "4.132.0"
   },
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "bun@1.4.2",
   "allowScripts": {
     "esbuild": true
   }

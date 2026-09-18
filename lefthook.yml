@@ -1,10 +1,15 @@
 pre-commit:
   parallel: true
   jobs:
-    - name: biome
-      glob: "*.{js,jsx,ts,tsx,mjs,cjs,mts,cts,json,jsonc,css,scss,html,astro,vue,svelte}"
-      run: bunx biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+    - name: oxlint
+      glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}"
+      run: bunx oxlint --fix --deny-warnings --no-error-on-unmatched-pattern {staged_files}
       stage_fixed: true
-    - name: eslint
-      glob: "*.{astro,js,jsx,ts,tsx,mjs,cjs,mts,cts}"
-      run: bunx eslint --no-warn-ignored --no-error-on-unmatched-pattern {staged_files}
+    - name: oxfmt
+      glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,json,jsonc,css,md,mdx}"
+      run: bunx oxfmt --no-error-on-unmatched-pattern {staged_files}
+      stage_fixed: true
+    - name: prettier
+      glob: "*.astro"
+      run: bunx prettier --write --no-color {staged_files}
+      stage_fixed: true

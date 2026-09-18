@@ -1,14 +1,13 @@
-import { getCollection } from "astro:content";
 import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
+import { getCollection } from "astro:content";
+
 import { SITE_DESCRIPTION, SITE_TITLE } from "~/consts";
 
 export async function GET(context: APIContext) {
   const { site } = context;
   if (!site) {
-    throw new Error(
-      "`site` must be set in astro.config.ts to build the RSS feed.",
-    );
+    throw new Error("`site` must be set in astro.config.ts to build the RSS feed.");
   }
 
   const posts = await getCollection("blog");

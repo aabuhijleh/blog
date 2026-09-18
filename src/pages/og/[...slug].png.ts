@@ -1,5 +1,6 @@
-import { type CollectionEntry, getCollection } from "astro:content";
 import type { APIRoute } from "astro";
+import { type CollectionEntry, getCollection } from "astro:content";
+
 import { renderOgImage } from "~/lib/og/render";
 
 export async function getStaticPaths() {
@@ -10,14 +11,9 @@ export async function getStaticPaths() {
   }));
 }
 
-export const GET: APIRoute<CollectionEntry<"blog">> = async ({
-  props,
-  site,
-}) => {
+export const GET: APIRoute<CollectionEntry<"blog">> = async ({ props, site }) => {
   if (!site) {
-    throw new Error(
-      "`site` must be set in astro.config.ts to build Open Graph images.",
-    );
+    throw new Error("`site` must be set in astro.config.ts to build Open Graph images.");
   }
 
   const png = await renderOgImage({ ...props.data, site });

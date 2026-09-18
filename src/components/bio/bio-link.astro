@@ -6,7 +6,6 @@ type Props = HTMLAttributes<"a">;
 const { href, ...props } = Astro.props;
 ---
 
-<!-- biome-ignore lint/a11y/useAnchorContent: the <slot /> carries the link text -->
-<a class="link-accent" href={href} target="_blank" rel="noopener" {...props}
-  ><slot /></a
->
+<a class="link-accent" href={href} target="_blank" rel="noopener" {...props}>
+  <slot />
+</a>

@@ -1,5 +1,6 @@
 import type { SatoriOptions } from "satori";
 import sharp from "sharp";
+
 import avatarSvg from "~/assets/avatar.svg?raw";
 import firaSans from "~/assets/fonts/fira-sans-latin-400-normal.woff?inline";
 import firaSansBold from "~/assets/fonts/fira-sans-latin-700-normal.woff?inline";
@@ -36,10 +37,7 @@ const rasterize = async (
     height: box.height * SUPERSAMPLE,
   };
   const natural = await sharp(source).metadata();
-  const ratio = Math.min(
-    target.width / natural.width,
-    target.height / natural.height,
-  );
+  const ratio = Math.min(target.width / natural.width, target.height / natural.height);
 
   const png = await sharp(source, {
     density: Math.max(1, Math.ceil(72 * ratio)),
@@ -103,10 +101,9 @@ let squiggle: Promise<Raster> | undefined;
 export const loadSquiggle = (box: Box) =>
   (squiggle ??= rasterize(Buffer.from(squiggleSvg(box)), box));
 
-const metaByFile = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/illustrations/*.svg",
-  { eager: true },
-);
+const metaByFile = import.meta.glob<{ default: ImageMetadata }>("/src/assets/illustrations/*.svg", {
+  eager: true,
+});
 
 const rawByFile = import.meta.glob<string>("/src/assets/illustrations/*.svg", {
   query: "?raw",
@@ -115,10 +112,7 @@ const rawByFile = import.meta.glob<string>("/src/assets/illustrations/*.svg", {
 });
 
 const sourceBySrc = new Map(
-  Object.entries(metaByFile).map(([file, module]) => [
-    module.default.src,
-    rawByFile[file],
-  ]),
+  Object.entries(metaByFile).map(([file, module]) => [module.default.src, rawByFile[file]]),
 );
 
 export const loadIllustration = (image: ImageMetadata, box: Box) => {

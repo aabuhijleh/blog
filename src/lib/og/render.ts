@@ -1,12 +1,8 @@
 import satori from "satori";
 import sharp from "sharp";
+
 import { SITE_AUTHOR } from "~/consts";
-import {
-  fonts,
-  loadAvatar,
-  loadIllustration,
-  loadSquiggle,
-} from "~/lib/og/assets";
+import { fonts, loadAvatar, loadIllustration, loadSquiggle } from "~/lib/og/assets";
 import {
   AVATAR_SIZE,
   CARD_HEIGHT,

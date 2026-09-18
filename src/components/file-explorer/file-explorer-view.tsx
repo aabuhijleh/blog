@@ -1,6 +1,8 @@
 import { ChevronRight, File, Folder, FolderOpen } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
+
 import { cn } from "~/lib/cn";
+
 import type { FileExplorerNode } from "./types";
 
 interface FileExplorerViewProps {
@@ -33,10 +35,7 @@ const foldersWithinDepth = (
   nodes.flatMap((node) => {
     if (!node.children || depth >= maxDepth) return [];
     const path = joinPath(parentPath, node.name);
-    return [
-      path,
-      ...foldersWithinDepth(node.children, maxDepth, depth + 1, path),
-    ];
+    return [path, ...foldersWithinDepth(node.children, maxDepth, depth + 1, path)];
   });
 
 const flattenVisible = (
@@ -52,10 +51,7 @@ const flattenVisible = (
     return [self, ...flattenVisible(node.children ?? [], expanded, path)];
   });
 
-const collectPreviews = (
-  nodes: FileExplorerNode[],
-  parentPath = "",
-): [string, string][] =>
+const collectPreviews = (nodes: FileExplorerNode[], parentPath = ""): [string, string][] =>
   nodes.flatMap((node) => {
     const path = joinPath(parentPath, node.name);
     if (node.children) return collectPreviews(node.children, path);
@@ -66,23 +62,19 @@ const cardClass = cn(
   "not-prose my-8 flex flex-col gap-2 rounded-lg border border-muted/30 bg-canvas p-2 font-sans text-sm sm:text-base lg:-mx-8 lg:flex-row",
 );
 
-const treeClass = cn(
-  "min-w-0 lg:max-h-120 lg:w-72 lg:shrink-0 lg:overflow-auto lg:pr-1",
-);
+const treeClass = cn("min-w-0 lg:max-h-120 lg:w-72 lg:shrink-0 lg:overflow-auto lg:pr-1");
 
 const previewClass = cn(
   "flex min-w-0 flex-1 rounded-md bg-terminal lg:max-h-120 lg:overflow-hidden",
 );
 
-const emptyClass = cn(
-  "m-auto px-4 py-8 text-center text-sm text-terminal-muted",
-);
+const emptyClass = cn("m-auto px-4 py-8 text-center text-sm text-terminal-muted");
 
 const rowClass = cn(
   "flex cursor-pointer items-center gap-1.5 rounded-md px-1.5 py-1 transition-colors hover:bg-muted/12",
 );
 
-const groupClass = cn("ml-3 border-muted/25 border-l pl-2");
+const groupClass = cn("ml-3 border-l border-muted/25 pl-2");
 
 export function FileExplorerView({
   tree,
@@ -100,10 +92,7 @@ export function FileExplorerView({
       ]),
   );
   const [selected, setSelected] = useState(firstFile);
-  const visible = useMemo(
-    () => flattenVisible(tree, expanded),
-    [tree, expanded],
-  );
+  const visible = useMemo(() => flattenVisible(tree, expanded), [tree, expanded]);
   const [focused, setFocused] = useState(() => visible[0]?.path ?? "");
   const items = useRef(new Map<string, HTMLDivElement>());
   const preview = selected ? previews.get(selected) : undefined;
@@ -176,7 +165,7 @@ export function FileExplorerView({
       const isSelected = !isFolder && selected === path;
 
       return (
-        // biome-ignore lint/a11y/useKeyWithClickEvents: the tree root owns keyboard handling
+        // oxlint-disable-next-line jsx-a11y/click-events-have-key-events -- the tree root owns keyboard handling
         <div
           key={path}
           role="treeitem"
@@ -211,38 +200,20 @@ export function FileExplorerView({
             />
             {isFolder ? (
               isOpen ? (
-                <FolderOpen
-                  className="size-4.5 shrink-0 text-accent"
-                  aria-hidden="true"
-                />
+                <FolderOpen className="size-4.5 shrink-0 text-accent" aria-hidden="true" />
               ) : (
-                <Folder
-                  className="size-4.5 shrink-0 text-accent"
-                  aria-hidden="true"
-                />
+                <Folder className="size-4.5 shrink-0 text-accent" aria-hidden="true" />
               )
             ) : (
-              <File
-                className="size-4.5 shrink-0 text-muted"
-                aria-hidden="true"
-              />
+              <File className="size-4.5 shrink-0 text-muted" aria-hidden="true" />
             )}
-            <span className="wrap-break-word min-w-0 lg:truncate">
-              {node.name}
-            </span>
+            <span className="min-w-0 wrap-break-word lg:truncate">{node.name}</span>
           </div>
           {isFolder && (
-            // biome-ignore lint/a11y/useSemanticElements: a tree needs role="group", not a fieldset
-            <div
-              role="group"
-              data-file-explorer-group
-              data-expanded={isOpen}
-              inert={!isOpen}
-            >
+            // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a tree needs role="group", not a fieldset
+            <div role="group" data-file-explorer-group data-expanded={isOpen} inert={!isOpen}>
               <div className="overflow-hidden">
-                <div className={groupClass}>
-                  {renderNodes(node.children ?? [], path)}
-                </div>
+                <div className={groupClass}>{renderNodes(node.children ?? [], path)}</div>
               </div>
             </div>
           )}
@@ -252,12 +223,8 @@ export function FileExplorerView({
 
   return (
     <div data-file-explorer-card className={cardClass}>
-      <div
-        role="tree"
-        aria-label={label}
-        className={treeClass}
-        onKeyDown={onKeyDown}
-      >
+      {/* oxlint-disable-next-line jsx-a11y/interactive-supports-focus -- the tree items carry the roving tabindex */}
+      <div role="tree" aria-label={label} className={treeClass} onKeyDown={onKeyDown}>
         {renderNodes(tree, "")}
       </div>
       <section
@@ -266,7 +233,7 @@ export function FileExplorerView({
         aria-label={selected ?? "File preview"}
       >
         {preview ? (
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: Shiki output, built on the server
+          // oxlint-disable-next-line react/no-danger -- Shiki output, built on the server
           <div dangerouslySetInnerHTML={{ __html: preview }} />
         ) : (
           <p className={emptyClass}>

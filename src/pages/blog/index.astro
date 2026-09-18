@@ -6,7 +6,7 @@ import { BaseLayout } from "~/layouts/base-layout";
 const title = "Blog";
 const description = "Everything I've written here, newest first.";
 
-const posts = (await getCollection("blog")).sort(
+const posts = (await getCollection("blog")).toSorted(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
@@ -15,18 +15,18 @@ const posts = (await getCollection("blog")).sort(
   <div class="mx-auto w-full max-w-3xl">
     <h1 class="mb-10 font-serif font-bold text-h1 sm:mb-12 lg:mb-16">Blog</h1>
     {posts.map((post, index) => (
-  <div>
-    {index !== 0 && <hr class="squiggle my-10 sm:my-15" />}
-    <article>
-      <h2 class="mt-8 font-bold font-sans text-h2 sm:mt-11.5">
-        <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-      </h2>
-      <p class="my-4 text-body sm:my-6">{post.data.description}</p>
-      <p class="font-bold font-sans text-muted text-sm uppercase sm:text-base">
-        — <FormattedDate date={post.data.pubDate} />
-      </p>
-    </article>
-  </div>
-))}
+      <div>
+        {index !== 0 && <hr class="squiggle my-10 sm:my-15" />}
+        <article>
+          <h2 class="mt-8 font-bold font-sans text-h2 sm:mt-11.5">
+            <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+          </h2>
+          <p class="my-4 text-body sm:my-6">{post.data.description}</p>
+          <p class="font-bold font-sans text-muted text-sm uppercase sm:text-base">
+            — <FormattedDate date={post.data.pubDate} />
+          </p>
+        </article>
+      </div>
+    ))}
   </div>
 </BaseLayout>

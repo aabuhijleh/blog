@@ -11,19 +11,22 @@ const linkClass = cn("link-accent font-bold");
 ---
 
 <BaseLayout title={title} description={description}>
-  <div
-    class="my-8 flex flex-1 flex-col items-center justify-center gap-8 lg:flex-row lg:gap-12"
-  >
-    <div
-      class="w-full max-w-xl text-center lg:max-w-none lg:flex-1 lg:text-left"
-    >
+  <div class="my-8 flex flex-1 flex-col items-center justify-center gap-8 lg:flex-row lg:gap-12">
+    <div class="w-full max-w-xl text-center lg:max-w-none lg:flex-1 lg:text-left">
       <p class="font-serif font-bold text-accent text-h1 leading-none">Oops!</p>
       <h1 class="mt-3 font-serif font-bold text-h2">
         We couldn't find that page you are looking for.
       </h1>
       <p class="mt-4 text-h4 leading-body">
-        Head <a href="/" class={linkClass}>home</a>, or go
-        <a href="/blog" class={linkClass}>read the blog</a>.
+        Head{" "}
+        <a href="/" class={linkClass}>
+          home
+        </a>
+        , or go
+        <a href="/blog" class={linkClass}>
+          read the blog
+        </a>
+        .
       </p>
     </div>
 

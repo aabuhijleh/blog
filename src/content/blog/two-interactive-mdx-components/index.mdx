@@ -52,19 +52,13 @@ import { FileExplorer } from "~/components/file-explorer";
   tree={[
     {
       name: "src",
-      children: [
-        { name: "consts.ts", content: `export const SITE_AUTHOR = 'Abed';` },
-      ],
+      children: [{ name: "consts.ts", content: `export const SITE_AUTHOR = 'Abed';` }],
     },
   ]}
 />;
 ```
 
-<FileExplorer
-  label="Blog source"
-  defaultExpanded={["src", "src/components"]}
-  tree={blogSource}
-/>
+<FileExplorer label="Blog source" defaultExpanded={["src", "src/components"]} tree={blogSource} />
 
 `defaultExpanded` takes folder paths. Leave it out and the top level opens on its own.
 
