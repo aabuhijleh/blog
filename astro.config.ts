@@ -6,8 +6,8 @@ import tailwindcss from "@tailwindcss/vite";
 import og from "astro-og";
 import { defineConfig, fontProviders } from "astro/config";
 
-import { CODE_THEME } from "./src/consts";
 import { externalLinks } from "./src/markdown/external-links";
+import { highlight } from "./src/markdown/highlight";
 import { images } from "./src/markdown/images";
 
 export default defineConfig({
@@ -34,12 +34,10 @@ export default defineConfig({
   ],
 
   markdown: {
-    shikiConfig: {
-      theme: CODE_THEME,
-    },
+    syntaxHighlight: false,
     processor: satteri({
       features: { rawHtml: true },
-      hastPlugins: [externalLinks, images],
+      hastPlugins: [highlight, externalLinks, images],
     }),
   },
 

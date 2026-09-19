@@ -29,6 +29,10 @@ I'm Abed, a software engineer who works mostly with web technologies. This blog 
 - Use the project's design tokens set in `~/styles/global.css`, not arbitrary values.
 - Use mobile-first, fully responsive styling to ensure the blog looks good on all devices.
 
+## Icons
+
+- Always import lucide icons with the `Icon` suffix.
+
 ## Logos
 
 - Use [svgl](https://svgl.app) to find and download logos.

@@ -1,0 +1,78 @@
+---
+import { InfoIcon, LightbulbIcon, OctagonAlertIcon, TriangleAlertIcon } from "@lucide/astro";
+
+import { cn } from "~/lib/cn";
+
+import type { AsideType } from "./types";
+
+interface Props {
+  type?: AsideType;
+  title?: string;
+}
+
+interface Variant {
+  label: string;
+  icon: typeof InfoIcon;
+  border: string;
+  tint: string;
+  accent: string;
+}
+
+const { type = "note", title } = Astro.props;
+
+const variants: Record<AsideType, Variant> = {
+  note: {
+    label: "Note",
+    icon: InfoIcon,
+    border: "border-l-accent",
+    tint: "bg-accent/8",
+    accent: "text-accent",
+  },
+  tip: {
+    label: "Tip",
+    icon: LightbulbIcon,
+    border: "border-l-tip",
+    tint: "bg-tip/8",
+    accent: "text-tip",
+  },
+  caution: {
+    label: "Caution",
+    icon: TriangleAlertIcon,
+    border: "border-l-caution",
+    tint: "bg-caution/8",
+    accent: "text-caution",
+  },
+  danger: {
+    label: "Danger",
+    icon: OctagonAlertIcon,
+    border: "border-l-danger",
+    tint: "bg-danger/8",
+    accent: "text-danger",
+  },
+};
+
+const variant = variants[type];
+const Icon = variant.icon;
+const heading = title ?? variant.label;
+
+const asideClass = cn(
+  "my-8 rounded-lg border border-l-6 border-muted/20 px-4 py-3 sm:px-5 sm:py-4",
+  variant.border,
+  variant.tint,
+);
+
+const headerClass = cn(
+  "not-prose mb-2 flex items-center justify-between gap-4 font-sans font-bold tracking-wide sm:mb-3",
+  variant.accent,
+);
+---
+
+<aside aria-label={heading} class={asideClass}>
+  <p class={headerClass}>
+    {heading}
+    <Icon class="size-5 shrink-0" aria-hidden="true" />
+  </p>
+  <div class="*:first:mt-0 *:last:mb-0">
+    <slot />
+  </div>
+</aside>

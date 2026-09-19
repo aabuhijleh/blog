@@ -1,4 +1,4 @@
-import { ChevronRight, File, Folder, FolderOpen } from "lucide-react";
+import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 
 import { cn } from "~/lib/cn";
@@ -194,7 +194,7 @@ export function FileExplorerView({
             data-file-explorer-row
             className={cn(rowClass, isSelected && "bg-accent/15 text-accent")}
           >
-            <ChevronRight
+            <ChevronRightIcon
               className={cn(
                 "size-4 shrink-0 text-muted transition-transform",
                 isFolder ? (isOpen ? "rotate-90" : "rotate-0") : "invisible",
@@ -203,12 +203,12 @@ export function FileExplorerView({
             />
             {isFolder ? (
               isOpen ? (
-                <FolderOpen className="size-4.5 shrink-0 text-accent" aria-hidden="true" />
+                <FolderOpenIcon className="size-4.5 shrink-0 text-accent" aria-hidden="true" />
               ) : (
-                <Folder className="size-4.5 shrink-0 text-accent" aria-hidden="true" />
+                <FolderIcon className="size-4.5 shrink-0 text-accent" aria-hidden="true" />
               )
             ) : (
-              <File className="size-4.5 shrink-0 text-muted" aria-hidden="true" />
+              <FileIcon className="size-4.5 shrink-0 text-muted" aria-hidden="true" />
             )}
             <span className="min-w-0 wrap-break-word lg:truncate">{node.name}</span>
           </div>

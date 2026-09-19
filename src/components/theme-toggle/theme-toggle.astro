@@ -1,5 +1,5 @@
 ---
-import { Moon, Sun } from "@lucide/astro";
+import { MoonIcon, SunIcon } from "@lucide/astro";
 import { cn } from "cn";
 
 import { THEME_STORAGE_KEY } from "./store";
@@ -30,8 +30,8 @@ const script = `
 ---
 
 <button type="button" class={buttonClass} data-theme-toggle>
-  <Sun class={sunClass} />
-  <Moon class={moonClass} />
+  <SunIcon class={sunClass} />
+  <MoonIcon class={moonClass} />
   <span class="sr-only">Toggle theme</span>
 </button>
 

@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/react";
-import { Check, Copy, SquareTerminal } from "lucide-react";
+import { CheckIcon, CopyIcon, SquareTerminalIcon } from "lucide-react";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 
 import { cn } from "~/lib/cn";
@@ -93,7 +93,7 @@ export function PackageCommand({ command, commands }: PackageCommandProps) {
   return (
     <div className={cardClass}>
       <div className={headerClass}>
-        <SquareTerminal
+        <SquareTerminalIcon
           className="hidden size-5 shrink-0 text-terminal-accent sm:block"
           aria-hidden="true"
         />
@@ -124,9 +124,9 @@ export function PackageCommand({ command, commands }: PackageCommandProps) {
         </div>
         <button type="button" className={copyClass} onClick={copy}>
           {copied ? (
-            <Check className="size-4.5 text-terminal-accent" />
+            <CheckIcon className="size-4.5 text-terminal-accent" />
           ) : (
-            <Copy className="size-4.5" />
+            <CopyIcon className="size-4.5" />
           )}
           <span className="sr-only">{copied ? "Command copied" : "Copy command"}</span>
         </button>

@@ -10,6 +10,10 @@
   --palette-ink: #36393b;
   --palette-muted: #6b6f72;
 
+  --palette-tip: #2f7d5f;
+  --palette-caution: #a95c00;
+  --palette-danger: #b3261e;
+
   --palette-terminal: #2e3440;
   --palette-terminal-raised: #3b4252;
   --palette-terminal-edge: #434c5e;
@@ -25,6 +29,10 @@
   --palette-canvas: #202122;
   --palette-ink: #fff;
   --palette-muted: #ccc;
+
+  --palette-tip: #6ee7b7;
+  --palette-caution: #fbbf24;
+  --palette-danger: #f6857c;
 }
 
 @theme inline {
@@ -32,6 +40,9 @@
   --color-ink: var(--palette-ink);
   --color-muted: var(--palette-muted);
   --color-accent: #548e9b;
+  --color-tip: var(--palette-tip);
+  --color-caution: var(--palette-caution);
+  --color-danger: var(--palette-danger);
   --color-sun: #f59e0b;
   --color-moon: #a5b4fc;
   --color-terminal: var(--palette-terminal);

@@ -5,6 +5,8 @@ node_modules/
 public/
 src/assets/
 bun.lock
+.agents/
+.claude/
 
 # A symlink to AGENTS.md, not a markdown file
 CLAUDE.md

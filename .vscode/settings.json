@@ -13,6 +13,10 @@
   "tailwindCSS.classAttributes": ["class", "className"],
   "tailwindCSS.classFunctions": ["cn"],
 
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+
   // TypeScript 7 has no plugin support, which @astrojs/ts-plugin needs
   "js/ts.experimental.useTsgo": false
 }
