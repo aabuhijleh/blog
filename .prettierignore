@@ -1,4 +1,4 @@
-# Generated, vendored, or binary — prettier owns everything else
+# Generated, vendored, or binary. Prettier owns everything else.
 .astro/
 dist/
 node_modules/

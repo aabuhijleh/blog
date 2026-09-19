@@ -7,6 +7,7 @@
   "editor.quickSuggestions": { "strings": "on" },
 
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "astro"],
+  "biome.enabled": false,
 
   "tailwindCSS.includeLanguages": { "astro": "html" },
   "tailwindCSS.classAttributes": ["class", "className"],

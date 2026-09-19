@@ -2,7 +2,6 @@
   "printWidth": 100,
   "plugins": [
     "prettier-plugin-astro",
-    "prettier-plugin-packagejson",
     "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss"
   ],
