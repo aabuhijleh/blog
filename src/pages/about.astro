@@ -69,9 +69,7 @@ const chipClass = cn(
   "group flex items-center gap-2 rounded-full border border-muted/30 bg-muted/10 px-3 py-1.5 font-sans text-base no-underline transition duration-200 hover:-translate-y-1 hover:rotate-0 hover:border-accent sm:gap-2.5 sm:px-4 sm:py-2 sm:text-lg",
 );
 
-const logoClass = cn(
-  "h-5 w-auto transition-transform duration-200 group-hover:scale-115 sm:h-6",
-);
+const logoClass = cn("h-5 w-auto transition-transform duration-200 group-hover:scale-115 sm:h-6");
 ---
 
 <BaseLayout title={title} description={description}>
@@ -86,8 +84,8 @@ const logoClass = cn(
     </figure>
     <div class="prose">
       <p>
-        I'm Abed Abu-Hijleh, a software engineer based in the West Bank. I've
-        been coding for food since 2018.
+        I'm Abed Abu-Hijleh, a software engineer based in the West Bank. I've been coding for food
+        since 2018.
       </p>
       <p>My tech stack these days:</p>
     </div>
@@ -99,10 +97,7 @@ const logoClass = cn(
             href={tech.href}
             target="_blank"
             rel="noopener"
-            class={cn(
-              chipClass,
-              index % 2 === 0 ? "sm:rotate-2" : "sm:-rotate-2",
-            )}
+            class={cn(chipClass, index % 2 === 0 ? "sm:rotate-2" : "sm:-rotate-2")}
           >
             <Image
               loading="eager"

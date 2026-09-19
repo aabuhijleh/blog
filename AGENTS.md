@@ -6,7 +6,7 @@ I'm Abed, a software engineer who works mostly with web technologies. This blog 
 
 - Start with no comments. Names and structure carry the intent.
 - If you need a paragraph to explain the code, rewrite the code to make it self-explanatory.
-- If a comment is still needed, keep it to one short line and keep it up to date.
+- A comment is an escape hatch. If a comment is still needed, keep it to one short line and ensure it is up to date.
 
 ## Colocation
 

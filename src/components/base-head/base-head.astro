@@ -20,10 +20,7 @@ const { title, description, image = "/og/site.png" } = Astro.props;
 const pageTitle = formatTitle(title);
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialURL = new URL(
-  image,
-  import.meta.env.DEV ? Astro.url.origin : Astro.site,
-);
+const socialURL = new URL(image, import.meta.env.DEV ? Astro.url.origin : Astro.site);
 ---
 
 <meta charset="utf-8" />

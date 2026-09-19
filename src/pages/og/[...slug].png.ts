@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { type CollectionEntry, getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 import { renderOgImage } from "~/lib/og/render";
 

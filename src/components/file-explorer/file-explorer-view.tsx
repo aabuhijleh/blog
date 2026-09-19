@@ -168,7 +168,7 @@ export function FileExplorerView({
       const isSelected = !isFolder && selected === path;
 
       return (
-        // oxlint-disable-next-line jsx-a11y/click-events-have-key-events -- the tree root owns keyboard handling
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events -- the tree root owns keyboard handling
         <div
           key={path}
           role="treeitem"
@@ -213,7 +213,7 @@ export function FileExplorerView({
             <span className="min-w-0 wrap-break-word lg:truncate">{node.name}</span>
           </div>
           {isFolder && (
-            // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a tree needs role="group", not a fieldset
+            // eslint-disable-next-line jsx-a11y/prefer-tag-over-role -- a tree needs role="group", not a fieldset
             <div role="group" data-file-explorer-group data-expanded={isOpen} inert={!isOpen}>
               <div className="overflow-hidden">
                 <div className={groupClass}>{renderNodes(node.children ?? [], path)}</div>
@@ -226,7 +226,7 @@ export function FileExplorerView({
 
   return (
     <div data-file-explorer-card className={cardClass}>
-      {/* oxlint-disable-next-line jsx-a11y/interactive-supports-focus -- the tree items carry the roving tabindex */}
+      {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus -- the tree items carry the roving tabindex */}
       <div role="tree" aria-label={label} className={treeClass} onKeyDown={onKeyDown}>
         {renderNodes(tree, "")}
       </div>
@@ -236,7 +236,7 @@ export function FileExplorerView({
         aria-label={selected ?? "File preview"}
       >
         {preview ? (
-          // oxlint-disable-next-line react/no-danger -- Shiki output, built on the server
+          // eslint-disable-next-line @eslint-react/dom-no-dangerously-set-innerhtml -- Shiki output, built on the server
           <div dangerouslySetInnerHTML={{ __html: preview }} />
         ) : (
           <p className={emptyClass}>

@@ -35,9 +35,7 @@ const groups = [
   <div class="flex flex-col gap-4 rounded-2xl border border-muted/40 p-3 sm:p-4">
     {groups.map((group) => (
       <div class="flex flex-col gap-2 not-first:border-muted/50 not-first:border-t not-first:border-dashed not-first:pt-4">
-        <p class="text-muted text-xs uppercase tracking-wide sm:text-sm">
-          {group.caption}
-        </p>
+        <p class="text-muted text-xs uppercase tracking-wide sm:text-sm">{group.caption}</p>
         <ul class="flex list-none flex-col gap-2 p-0">
           {group.items.map((item) => (
             <li

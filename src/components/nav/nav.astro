@@ -19,24 +19,9 @@ const iconClass = cn("size-4.5 sm:size-5");
   <NavLink href="/">home</NavLink>
   <NavLink href="/about">about</NavLink>
   <NavLink href="/blog">blog</NavLink>
-  <a
-    href="https://github.com/aabuhijleh"
-    target="_blank"
-    rel="noopener"
-    class={githubClass}
-  >
-    <Image
-      loading="eager"
-      src={githubLight}
-      alt=""
-      class={cn(iconClass, "dark:hidden")}
-    />
-    <Image
-      loading="eager"
-      src={githubDark}
-      alt=""
-      class={cn(iconClass, "hidden dark:block")}
-    />
+  <a href="https://github.com/aabuhijleh" target="_blank" rel="noopener" class={githubClass}>
+    <Image loading="eager" src={githubLight} alt="" class={cn(iconClass, "dark:hidden")} />
+    <Image loading="eager" src={githubDark} alt="" class={cn(iconClass, "hidden dark:block")} />
     <span class="sr-only">GitHub</span>
   </a>
   <ThemeToggle />

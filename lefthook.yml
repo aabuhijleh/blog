@@ -1,18 +1,18 @@
 pre-commit:
   parallel: true
   jobs:
-    - name: oxlint
-      glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,astro}"
-      run: bunx oxlint --fix --deny-warnings --no-error-on-unmatched-pattern {staged_files}
-      stage_fixed: true
-    - name: oxfmt
-      glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,json,jsonc,css,md,mdx}"
-      run: bunx oxfmt --ignore-path .gitignore --no-error-on-unmatched-pattern {staged_files}
-      stage_fixed: true
-    - name: prettier
-      glob: "*.astro"
-      run: bunx prettier --write --no-color {staged_files}
-      stage_fixed: true
+    - name: fix
+      group:
+        piped: true
+        jobs:
+          - name: eslint
+            glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,astro}"
+            run: bunx eslint --fix --max-warnings 0 --no-warn-ignored --no-error-on-unmatched-pattern {staged_files}
+            stage_fixed: true
+          - name: prettier
+            glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,astro,json,jsonc,css,md,mdx,yml,yaml}"
+            run: bunx prettier --write --no-color --ignore-unknown {staged_files}
+            stage_fixed: true
     - name: astro
       glob: "*.{astro,ts,tsx,js,jsx,mts,cts,mjs,cjs}"
       run: bun run astro:check

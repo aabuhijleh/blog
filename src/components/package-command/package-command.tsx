@@ -4,7 +4,7 @@ import { useEffect, useId, useMemo, useRef, useState } from "react";
 
 import { cn } from "~/lib/cn";
 
-import { type PackageCommands, toPackageCommands } from "./commands";
+import { toPackageCommands, type PackageCommands } from "./commands";
 import {
   $packageManager,
   DEFAULT_PACKAGE_MANAGER,
@@ -97,7 +97,7 @@ export function PackageCommand({ command, commands }: PackageCommandProps) {
           className="hidden size-5 shrink-0 text-terminal-accent sm:block"
           aria-hidden="true"
         />
-        {/* oxlint-disable-next-line jsx-a11y/interactive-supports-focus -- the tabs carry the roving tabindex */}
+        {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus -- the tabs carry the roving tabindex */}
         <div
           ref={tablist}
           role="tablist"

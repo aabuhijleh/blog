@@ -1,4 +1,10 @@
-# oxfmt owns everything except .astro — see .oxfmtrc.json
-*
-!*/
-!*.astro
+# Generated, vendored, or binary — prettier owns everything else
+.astro/
+dist/
+node_modules/
+public/
+src/assets/
+bun.lock
+
+# A symlink to AGENTS.md, not a markdown file
+CLAUDE.md

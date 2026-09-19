@@ -21,11 +21,7 @@ const { Content } = await render(post);
 const estimate = readingTime(post.body ?? "").text;
 ---
 
-<BaseLayout
-  title={title}
-  description={description}
-  image={`/og/${post.id}.png`}
->
+<BaseLayout title={title} description={description} image={`/og/${post.id}.png`}>
   <header class="text-center">
     <p class="font-bold font-sans text-muted text-sm uppercase sm:text-body">
       <FormattedDate date={pubDate} /> ~ {estimate}
