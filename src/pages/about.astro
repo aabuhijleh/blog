@@ -4,13 +4,12 @@ import { Image } from "astro:assets";
 import codingRocket from "~/assets/illustrations/coding-rocket.svg";
 import bun from "~/assets/logos/bun.svg";
 import claude from "~/assets/logos/claude.svg";
+import convex from "~/assets/logos/convex.svg";
 import reactDark from "~/assets/logos/react-dark.svg";
 import reactLight from "~/assets/logos/react-light.svg";
 import tailwindcss from "~/assets/logos/tailwindcss.svg";
 import tanstackDark from "~/assets/logos/tanstack-dark.svg";
 import tanstackLight from "~/assets/logos/tanstack-light.svg";
-import turborepoDark from "~/assets/logos/turborepo-dark.svg";
-import turborepoLight from "~/assets/logos/turborepo-light.svg";
 import typescript from "~/assets/logos/typescript.svg";
 import { SOCIAL_LINKS } from "~/consts";
 import { BaseLayout } from "~/layouts/base-layout";
@@ -26,7 +25,7 @@ interface Tech {
   darkSrc?: ImageMetadata;
 }
 
-const stack: Tech[] = [
+const stack: Array<Tech> = [
   {
     name: "TypeScript",
     href: "https://www.typescriptlang.org",
@@ -50,15 +49,14 @@ const stack: Tech[] = [
     src: tailwindcss,
   },
   {
+    name: "Convex",
+    href: "https://www.convex.dev",
+    src: convex,
+  },
+  {
     name: "Bun",
     href: "https://bun.sh",
     src: bun,
-  },
-  {
-    name: "Turborepo",
-    href: "https://turborepo.com",
-    src: turborepoLight,
-    darkSrc: turborepoDark,
   },
   {
     name: "Claude Code",
@@ -79,7 +77,7 @@ const logoClass = cn(
 <BaseLayout title={title} description={description}>
   <div class="mx-auto w-full max-w-2xl">
     <h1 class="mb-10 font-serif font-bold text-h1 sm:mb-12">About</h1>
-    <figure class="mx-auto mb-8 max-w-55 sm:max-w-75 lg:float-right lg:mx-0 lg:-mt-12 lg:-mr-28 lg:ml-8">
+    <figure class="hidden lg:float-right lg:-mt-12 lg:-mr-28 lg:ml-8 lg:block lg:max-w-75">
       <Image
         loading="eager"
         src={codingRocket}
@@ -89,7 +87,7 @@ const logoClass = cn(
     <div class="prose">
       <p>
         I'm Abed Abu-Hijleh, a software engineer based in the West Bank. I've
-        been coding for food since 2018, and for fun since well before that.
+        been coding for food since 2018.
       </p>
       <p>My tech stack these days:</p>
     </div>
