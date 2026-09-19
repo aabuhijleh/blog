@@ -25,7 +25,9 @@ const LANGUAGES: Record<string, string> = {
 const languageOf = (name: string) =>
   LANGUAGES[name.split(".").pop()?.toLowerCase() ?? ""] ?? "text";
 
-export const highlightTree = async (nodes: FileExplorerSource[]): Promise<FileExplorerNode[]> =>
+export const highlightTree = async (
+  nodes: Array<FileExplorerSource>,
+): Promise<Array<FileExplorerNode>> =>
   Promise.all(
     nodes.map(async ({ name, content, children }) => {
       const node: FileExplorerNode = { name };

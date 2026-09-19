@@ -4,9 +4,9 @@ import { highlightTree } from "./highlight";
 import type { FileExplorerSource } from "./types";
 
 interface Props {
-  tree: FileExplorerSource[];
+  tree: Array<FileExplorerSource>;
   label?: string;
-  defaultExpanded?: string[];
+  defaultExpanded?: Array<string>;
   defaultExpandedDepth?: number;
 }
 

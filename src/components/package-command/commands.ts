@@ -53,7 +53,7 @@ const DEV_FLAG: PackageCommands = {
 
 const DEV_FLAGS = new Set(["-D", "--dev", "--save-dev"]);
 
-const build = (prefixes: PackageCommands, parts: (string | undefined)[]) =>
+const build = (prefixes: PackageCommands, parts: Array<string | undefined>) =>
   Object.fromEntries(
     PACKAGE_MANAGERS.map((manager) => [
       manager,
@@ -64,7 +64,7 @@ const build = (prefixes: PackageCommands, parts: (string | undefined)[]) =>
 const same = (command: string) =>
   Object.fromEntries(PACKAGE_MANAGERS.map((manager) => [manager, command])) as PackageCommands;
 
-const withDevFlag = (prefixes: PackageCommands, args: string[]) => {
+const withDevFlag = (prefixes: PackageCommands, args: Array<string>) => {
   const isDev = args.some((arg) => DEV_FLAGS.has(arg));
   const rest = args.filter((arg) => !DEV_FLAGS.has(arg)).join(" ");
   return Object.fromEntries(

@@ -6,9 +6,9 @@ import { cn } from "~/lib/cn";
 import type { FileExplorerNode } from "./types";
 
 interface FileExplorerViewProps {
-  tree: FileExplorerNode[];
+  tree: Array<FileExplorerNode>;
   label?: string;
-  defaultExpanded?: string[];
+  defaultExpanded?: Array<string>;
   defaultExpandedDepth?: number;
 }
 
@@ -27,11 +27,11 @@ const ancestorPaths = (path: string) => {
 };
 
 const foldersWithinDepth = (
-  nodes: FileExplorerNode[],
+  nodes: Array<FileExplorerNode>,
   maxDepth: number,
   depth = 0,
   parentPath = "",
-): string[] =>
+): Array<string> =>
   nodes.flatMap((node) => {
     if (!node.children || depth >= maxDepth) return [];
     const path = joinPath(parentPath, node.name);
@@ -39,10 +39,10 @@ const foldersWithinDepth = (
   });
 
 const flattenVisible = (
-  nodes: FileExplorerNode[],
+  nodes: Array<FileExplorerNode>,
   expanded: ReadonlySet<string>,
   parentPath = "",
-): VisibleNode[] =>
+): Array<VisibleNode> =>
   nodes.flatMap((node) => {
     const path = joinPath(parentPath, node.name);
     const isFolder = Boolean(node.children);
@@ -51,7 +51,10 @@ const flattenVisible = (
     return [self, ...flattenVisible(node.children ?? [], expanded, path)];
   });
 
-const collectPreviews = (nodes: FileExplorerNode[], parentPath = ""): [string, string][] =>
+const collectPreviews = (
+  nodes: Array<FileExplorerNode>,
+  parentPath = "",
+): Array<[string, string]> =>
   nodes.flatMap((node) => {
     const path = joinPath(parentPath, node.name);
     if (node.children) return collectPreviews(node.children, path);
@@ -157,7 +160,7 @@ export function FileExplorerView({
     event.preventDefault();
   };
 
-  const renderNodes = (nodes: FileExplorerNode[], parentPath: string) =>
+  const renderNodes = (nodes: Array<FileExplorerNode>, parentPath: string) =>
     nodes.map((node) => {
       const path = joinPath(parentPath, node.name);
       const isFolder = Boolean(node.children);

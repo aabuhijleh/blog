@@ -1,11 +1,11 @@
 export interface FileExplorerSource {
   name: string;
   content?: string;
-  children?: FileExplorerSource[];
+  children?: Array<FileExplorerSource>;
 }
 
 export interface FileExplorerNode {
   name: string;
   html?: string;
-  children?: FileExplorerNode[];
+  children?: Array<FileExplorerNode>;
 }

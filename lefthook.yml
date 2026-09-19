@@ -2,7 +2,7 @@ pre-commit:
   parallel: true
   jobs:
     - name: oxlint
-      glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}"
+      glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,astro}"
       run: bunx oxlint --fix --deny-warnings --no-error-on-unmatched-pattern {staged_files}
       stage_fixed: true
     - name: oxfmt
@@ -13,3 +13,6 @@ pre-commit:
       glob: "*.astro"
       run: bunx prettier --write --no-color {staged_files}
       stage_fixed: true
+    - name: astro
+      glob: "*.{astro,ts,tsx,js,jsx,mts,cts,mjs,cjs}"
+      run: bun run astro:check

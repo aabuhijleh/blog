@@ -11,6 +11,7 @@
   },
   "rules": {
     "react/react-in-jsx-scope": "off",
+    "typescript/array-type": ["error", { "default": "generic" }],
     "import/no-unassigned-import": ["error", { "allow": ["**/*.css"] }],
     "no-restricted-imports": [
       "error",
