@@ -1,6 +1,6 @@
 # Blog
 
-My personal blog at [blog.aabuhijleh.com](https://blog.aabuhijleh.com).
+My blog at [blog.aabuhijleh.com](https://blog.aabuhijleh.com).
 
 ## Credits
 

@@ -13,7 +13,6 @@ import { images } from "./src/markdown/images";
 export default defineConfig({
   site: "https://blog.aabuhijleh.com",
 
-  compressHTML: false,
   integrations: [mdx(), sitemap(), og(), react()],
 
   fonts: [
