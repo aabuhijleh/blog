@@ -13,6 +13,10 @@ pre-commit:
             glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,astro,json,jsonc,css,md,mdx,yml,yaml}"
             run: bunx prettier --write --no-color --ignore-unknown {staged_files}
             stage_fixed: true
+
+pre-push:
+  parallel: true
+  jobs:
     - name: astro
       glob: "*.{astro,ts,tsx,js,jsx,mts,cts,mjs,cjs}"
       run: bun run astro:check
