@@ -1,6 +1,7 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": ["eslint", "typescript", "unicorn", "oxc", "react", "jsx-a11y", "import"],
+  "jsPlugins": ["@shadcn/lint"],
   "categories": {
     "correctness": "error",
     "suspicious": "error"
@@ -8,6 +9,11 @@
   "env": {
     "builtin": true,
     "browser": true
+  },
+  "settings": {
+    "shadcn": {
+      "ui": ["~/components", "~/layouts"]
+    }
   },
   "rules": {
     "react/react-in-jsx-scope": "off",
@@ -23,6 +29,11 @@
           }
         ]
       }
-    ]
+    ],
+    "shadcn/no-restyle": ["error", { "allow": ["layout"] }],
+    "shadcn/no-raw-colors": ["error", { "allow": ["text-body", "text-h*"] }],
+    "shadcn/no-arbitrary-values": ["error", { "allow": ["content-['']"] }],
+    "shadcn/no-unknown-classes": "error",
+    "shadcn/require-static-classes": "error"
   }
 }
