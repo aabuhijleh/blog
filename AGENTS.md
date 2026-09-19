@@ -28,3 +28,7 @@ I'm Abed, a software engineer who works mostly with web technologies. This blog 
 - Use `cn` from `~/lib/cn` for all conditional class lists. Never use string interpolation or `class:list`.
 - Use the project's design tokens set in `~/styles/global.css`, not arbitrary values.
 - Use mobile-first, fully responsive styling to ensure the blog looks good on all devices.
+
+## Logos
+
+- Use [svgl](https://svgl.app) to find and download logos.
