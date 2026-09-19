@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+
 import catDesk from "~/assets/illustrations/cat-desk.svg";
 import { BaseLayout } from "~/layouts/base-layout";
 import { cn } from "~/lib/cn";
@@ -7,7 +8,7 @@ import { cn } from "~/lib/cn";
 const title = "404";
 const description = "We couldn't find that page you are looking for.";
 
-const linkClass = cn("link-accent font-bold");
+const linkClass = cn("font-bold link-accent");
 ---
 
 <BaseLayout title={title} description={description}>

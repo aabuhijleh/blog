@@ -1,0 +1,4 @@
+# oxfmt owns everything except .astro — see .oxfmtrc.json
+*
+!*/
+!*.astro

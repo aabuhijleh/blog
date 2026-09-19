@@ -10,8 +10,8 @@
     "astro:check": "astro check",
     "lint": "oxlint --deny-warnings",
     "lint:fix": "oxlint --fix --deny-warnings",
-    "format:check": "oxfmt --check",
-    "format:fix": "oxfmt",
+    "format:check": "oxfmt --ignore-path .gitignore --check",
+    "format:fix": "oxfmt --ignore-path .gitignore",
     "prettier:check": "prettier --check \"**/*.astro\"",
     "prettier:fix": "prettier --write \"**/*.astro\"",
     "verify": "bun run --parallel astro:check lint format:check prettier:check",
@@ -43,6 +43,7 @@
   "devDependencies": {
     "@astrojs/check": "0.9.10",
     "@astrojs/ts-plugin": "^1.10.12",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
     "@tailwindcss/typography": "0.5.20",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
@@ -52,6 +53,7 @@
     "oxlint": "^1.83.0",
     "prettier": "^3.9.8",
     "prettier-plugin-astro": "^1.0.1",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "typescript": "6.0.3",
     "wrangler": "4.135.0"
   },

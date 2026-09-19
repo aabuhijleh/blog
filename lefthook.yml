@@ -7,7 +7,7 @@ pre-commit:
       stage_fixed: true
     - name: oxfmt
       glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,json,jsonc,css,md,mdx}"
-      run: bunx oxfmt --no-error-on-unmatched-pattern {staged_files}
+      run: bunx oxfmt --ignore-path .gitignore --no-error-on-unmatched-pattern {staged_files}
       stage_fixed: true
     - name: prettier
       glob: "*.astro"
