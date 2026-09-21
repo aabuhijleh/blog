@@ -1,10 +1,10 @@
 import type { SatoriOptions } from "satori";
 import sharp from "sharp";
 
-import avatarSvg from "~/assets/avatar.svg?raw";
 import firaSans from "~/assets/fonts/fira-sans-latin-400-normal.woff?inline";
 import firaSansBold from "~/assets/fonts/fira-sans-latin-700-normal.woff?inline";
 import merriweatherBold from "~/assets/fonts/merriweather-latin-700-normal.woff?inline";
+import avatarSvg from "~/assets/icons/avatar.svg?raw";
 
 const SUPERSAMPLE = 2;
 const ACCENT = "#548e9b";
